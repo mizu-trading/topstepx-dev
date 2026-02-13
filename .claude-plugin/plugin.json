@@ -1,0 +1,9 @@
+{
+  "name": "topstepx-api",
+  "version": "1.0.0",
+  "description": "Teaches Claude how to build integrations with the TopStepX (ProjectX Gateway) trading API in any programming language",
+  "author": {
+    "name": "mizu-trading"
+  },
+  "keywords": ["topstepx", "projectx", "trading", "futures", "api", "signalr"]
+}
