@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-stopped_at: Completed 02-02-PLAN.md
-last_updated: "2026-03-11T20:13:44.903Z"
-last_activity: "2026-03-11 -- Completed 02-02: 19 template files (12 subdirectory + 7 trading-specific)"
+stopped_at: Completed 02-01-PLAN.md (02-02 also complete, 02-03 remaining)
+last_updated: "2026-03-11T20:15:10Z"
+last_activity: "2026-03-11 -- Completed 02-01: 24 top-level GSD templates adapted with tsx naming"
 progress:
   total_phases: 10
   completed_phases: 1
@@ -28,7 +28,7 @@ See: .planning/PROJECT.md (updated 2026-03-11)
 Phase: 2 of 10 (Templates and State Tooling)
 Plan: 3 of 3 in current phase
 Status: In progress
-Last activity: 2026-03-11 -- Completed 02-02: 19 template files (12 subdirectory + 7 trading-specific)
+Last activity: 2026-03-11 -- Completed 02-01: 24 top-level GSD templates adapted with tsx naming
 
 Progress: [████████░░] 83% (Overall: 5/6 plans complete)
 
@@ -36,8 +36,8 @@ Progress: [████████░░] 83% (Overall: 5/6 plans complete)
 
 **Velocity:**
 - Total plans completed: 5
-- Average duration: 8min
-- Total execution time: 34min
+- Average duration: 10min
+- Total execution time: 50min
 
 **By Phase:**
 
@@ -46,11 +46,12 @@ Progress: [████████░░] 83% (Overall: 5/6 plans complete)
 | Phase 01 P01 | 4min | 2 tasks | 3 files |
 | Phase 01 P02 | 8min | 2 tasks | 8 files |
 | Phase 01 P03 | 8min | 2 tasks | 2 files |
+| Phase 02 P01 | 16min | 2 tasks | 24 files |
 | Phase 02 P02 | 14min | 2 tasks | 19 files |
 
 **Recent Trend:**
-- Last 5 plans: 4min, 8min, 8min, 14min
-- Trend: stable (larger task count in 02-02)
+- Last 5 plans: 4min, 8min, 8min, 16min, 14min
+- Trend: stable (larger file counts in Phase 2 template work)
 
 *Updated after each plan completion*
 
@@ -74,6 +75,9 @@ Recent decisions affecting current work:
 - [01-03]: Preserved all GSD checkpoint content, added trading sections at end (not interleaved) for easy future GSD merging
 - [01-03]: Added tsx- naming via framework agent references since GSD sources had no gsd- naming to replace
 - [01-03]: Each trading verification pattern structured with what/how/why and concrete grep commands
+- [02-01]: Trading examples are ADDITIONS to existing GSD examples, not replacements
+- [02-01]: config.json uses tsx/ branch prefix for clean separation from GSD branches
+- [02-01]: Structural templates kept domain-agnostic -- no forced trading examples where format is the point
 - [02-02]: integrations.md is the only subdirectory template with trading-specific example content
 - [02-02]: Bot scaffolds embed all SAF-01 through SAF-05 as non-optional defaults
 - [02-02]: Python scaffold uses IntEnum for type safety in enum definitions
@@ -90,5 +94,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-11
-Stopped at: Completed 02-02-PLAN.md
+Stopped at: Completed 02-01-PLAN.md (02-02 also complete, 02-03 remaining)
 Resume file: None
