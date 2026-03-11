@@ -1,0 +1,40 @@
+{
+  "name": "topstepx-skill",
+  "version": "1.0.0",
+  "description": "Teaches AI coding assistants how to build integrations with the TopStepX (ProjectX Gateway) trading API",
+  "bin": {
+    "topstepx-skill": "bin/install.js"
+  },
+  "files": [
+    "bin/",
+    "skills/",
+    "topstepx/"
+  ],
+  "keywords": [
+    "topstepx",
+    "projectx",
+    "trading",
+    "futures",
+    "api",
+    "signalr",
+    "claude-code",
+    "opencode",
+    "codex",
+    "gemini-cli",
+    "ai-skill",
+    "agent-skill"
+  ],
+  "author": "mizu-trading",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mizu-trading/topstepx-skill.git"
+  },
+  "homepage": "https://github.com/mizu-trading/topstepx-skill#readme",
+  "bugs": {
+    "url": "https://github.com/mizu-trading/topstepx-skill/issues"
+  },
+  "engines": {
+    "node": ">=16.7.0"
+  }
+}
