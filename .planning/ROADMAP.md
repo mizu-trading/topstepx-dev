@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: References and Domain Knowledge** - Complete trading domain reference materials with safety patterns (completed 2026-03-11)
 - [x] **Phase 2: Templates and State Tooling** - Output format standards and state management infrastructure (completed 2026-03-11)
 - [x] **Phase 3: Trading-Aware Agents** - All 12 agents adapted from GSD with trading domain context (completed 2026-03-12)
-- [ ] **Phase 4: Core Execution Workflows** - GSD-adapted orchestration engine (plan, execute, verify, discuss)
+- [x] **Phase 4: Core Execution Workflows** - GSD-adapted orchestration engine (plan, execute, verify, discuss) (completed 2026-03-12)
 - [ ] **Phase 5: From-Scratch Workflow** - Trading-specific new-project questioning and generation flow
 - [ ] **Phase 6: Language Adaptation Workflow** - Cross-language TopStepX code conversion
 - [ ] **Phase 7: PineScript Conversion Workflow** - TradingView PineScript to live TopStepX bot conversion
@@ -88,10 +88,10 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 04-01-PLAN.md — Adapt discuss-phase + plan-phase workflows with trading domain injection (WKF-02, WKF-03)
-- [ ] 04-02-PLAN.md — Adapt execute-phase + execute-plan + transition workflows (WKF-04)
-- [ ] 04-03-PLAN.md — Adapt verify-work + verify-phase + diagnose-issues workflows (WKF-05)
-- [ ] 04-04-PLAN.md — Adapt 26 remaining utility workflows with naming-only changes (WKF-06)
+- [x] 04-01-PLAN.md — Adapt discuss-phase + plan-phase workflows with trading domain injection (WKF-02, WKF-03)
+- [x] 04-02-PLAN.md — Adapt execute-phase + execute-plan + transition workflows (WKF-04)
+- [x] 04-03-PLAN.md — Adapt verify-work + verify-phase + diagnose-issues workflows (WKF-05)
+- [x] 04-04-PLAN.md — Adapt 26 remaining utility workflows with naming-only changes (WKF-06)
 
 ### Phase 5: From-Scratch Workflow
 **Goal**: A user can start from zero and be guided through a complete trading bot project creation: requirements gathering, research, roadmap, and phase execution
@@ -102,10 +102,10 @@ Plans:
   2. The workflow produces a complete .planning/ directory (PROJECT.md, REQUIREMENTS.md, ROADMAP.md, STATE.md) with trading-domain content populated from user answers
   3. Risk parameters (position sizing, max loss, max contracts, daily limits) are captured during questioning and embedded in project requirements before any code generation begins
   4. The workflow routes into plan-phase for the first phase after project initialization, creating a seamless start-to-execution flow
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 05-01: TBD
+- [ ] 05-01-PLAN.md — Inject trading-specific questioning, artifact generation, and requirement categories into new-project.md
 
 ### Phase 6: Language Adaptation Workflow
 **Goal**: A user can convert an existing TopStepX trading bot from any supported language to any other supported language
@@ -192,8 +192,8 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5/6/7 (parallel-eligible) -
 | 1. References and Domain Knowledge | 3/3 | Complete   | 2026-03-11 |
 | 2. Templates and State Tooling | 3/3 | Complete   | 2026-03-11 |
 | 3. Trading-Aware Agents | 4/4 | Complete   | 2026-03-12 |
-| 4. Core Execution Workflows | 0/4 | Planned | - |
-| 5. From-Scratch Workflow | 0/TBD | Not started | - |
+| 4. Core Execution Workflows | 4/4 | Complete | 2026-03-12 |
+| 5. From-Scratch Workflow | 0/1 | Planned | - |
 | 6. Language Adaptation Workflow | 0/TBD | Not started | - |
 | 7. PineScript Conversion Workflow | 0/TBD | Not started | - |
 | 8. Core Commands | 0/TBD | Not started | - |

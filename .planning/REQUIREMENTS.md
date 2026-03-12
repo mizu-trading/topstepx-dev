@@ -68,7 +68,7 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 ### Workflows (WKF)
 
 **GSD-Adapted Core:**
-- [ ] **WKF-01**: `new-project` workflow — Trading-specific questioning, risk parameter gathering
+- [x] **WKF-01**: `new-project` workflow — Trading-specific questioning, risk parameter gathering
 - [x] **WKF-02**: `discuss-phase` workflow — Trading implementation context gathering
 - [x] **WKF-03**: `plan-phase` workflow — Research + plan + verify for trading phases
 - [x] **WKF-04**: `execute-phase` workflow — Wave-based parallel execution with trading awareness
@@ -177,7 +177,7 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 | WKF-04 | Phase 4 | Complete |
 | WKF-05 | Phase 4 | Complete |
 | WKF-06 | Phase 4 | Complete |
-| WKF-01 | Phase 5 | Pending |
+| WKF-01 | Phase 5 | Complete |
 | WKF-07 | Phase 6 | Pending |
 | WKF-08 | Phase 7 | Pending |
 | CMD-01 | Phase 8 | Pending |

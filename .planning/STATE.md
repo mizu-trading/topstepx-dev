@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: phase-4-complete
-stopped_at: Completed 04-04-PLAN.md (Phase 4 complete, all 4 plans done)
-last_updated: "2026-03-12T19:09:24Z"
-last_activity: "2026-03-12 -- Completed 04-04: 26 utility workflows adapted (26 files, 7719 lines)"
+status: in_progress
+stopped_at: Completed 05-01-PLAN.md (Phase 5 complete, 1/1 plans done)
+last_updated: "2026-03-12T20:38:04Z"
+last_activity: "2026-03-12 -- Completed 05-01: Trading-specific new-project workflow (1 file, 1307 lines)"
 progress:
   total_phases: 10
-  completed_phases: 4
-  total_plans: 14
-  completed_plans: 14
+  completed_phases: 5
+  total_plans: 15
+  completed_plans: 15
   percent: 100
 ---
 
@@ -21,23 +21,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-11)
 
 **Core value:** AI agents can take any trading idea and produce a working, live-tradeable TopStepX integration by following TSX's guided workflows
-**Current focus:** Phase 4 complete -- ready for Phase 5 (New Project Trading Workflow)
+**Current focus:** Phase 5 complete -- ready for Phase 6/7 (PineScript Adaptation, Discuss Phase workflows)
 
 ## Current Position
 
-Phase: 4 of 10 (Core Execution Workflows) -- COMPLETE
-Plan: 4 of 4 in current phase (all complete)
-Status: Phase 4 complete
-Last activity: 2026-03-12 -- Completed 04-04: 26 utility workflows adapted (26 files, 7719 lines)
+Phase: 5 of 10 (From-Scratch Workflow) -- COMPLETE
+Plan: 1 of 1 in current phase (all complete)
+Status: Phase 5 complete
+Last activity: 2026-03-12 -- Completed 05-01: Trading-specific new-project workflow (1 file, 1307 lines)
 
-Progress: [██████████] 100% (Overall: 14/14 plans complete)
+Progress: [██████████] 100% (Overall: 15/15 plans complete)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 14
-- Average duration: 9min
-- Total execution time: 122min
+- Total plans completed: 15
+- Average duration: 8min
+- Total execution time: 127min
 
 **By Phase:**
 
@@ -56,10 +56,11 @@ Progress: [██████████] 100% (Overall: 14/14 plans complete)
 | Phase 04 P02 | 7min | 2 tasks | 3 files |
 | Phase 04 P03 | 6min | 2 tasks | 3 files |
 | Phase 04 P04 | 6min | 2 tasks | 26 files |
+| Phase 05 P01 | 5min | 2 tasks | 1 files |
 
 **Recent Trend:**
-- Last 5 plans: 10min, 5min, 7min, 6min, 6min
-- Trend: Phase 4 workflows maintain fast pace (Markdown content adaptation)
+- Last 5 plans: 5min, 7min, 6min, 6min, 5min
+- Trend: Phase 5 from-scratch workflow completes fast (single-file deep injection)
 
 *Updated after each plan completion*
 
@@ -115,6 +116,11 @@ Recent decisions affecting current work:
 - [04-04]: new-project.md naming-only -- deep trading injection deferred to Phase 5 (WKF-01)
 - [04-04]: update.md package name changed to topstepx-skill@latest
 - [04-04]: settings.md config paths use ~/.tsx/ instead of ~/.gsd/
+- [05-01]: Trading questioning replaces generic opener -- "Tell me about your trading idea" instead of "What do you want to build"
+- [05-01]: Risk parameters captured during Step 3 questioning, generated as artifact in Step 4 -- never deferred to Step 7
+- [05-01]: SAF-* and RSK-* requirement categories are non-optional even if user doesn't mention them
+- [05-01]: Auto-mode parses trading fields from provided documents including PineScript detection
+- [05-01]: Generic category fallback preserved for potential non-trading projects
 
 ### Pending Todos
 
@@ -122,10 +128,10 @@ None yet.
 
 ### Blockers/Concerns
 
-None -- Phase 4 complete, all 14 plans across 4 phases done.
+None -- Phase 5 complete, all 15 plans across 5 phases done.
 
 ## Session Continuity
 
-Last session: 2026-03-12T19:09:24Z
-Stopped at: Completed 04-04-PLAN.md (Phase 4 complete, all 4 plans done)
+Last session: 2026-03-12T20:38:04Z
+Stopped at: Completed 05-01-PLAN.md (Phase 5 complete, 1/1 plans done)
 Resume file: None
