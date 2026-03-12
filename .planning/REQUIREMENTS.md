@@ -101,7 +101,7 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 
 ### Infrastructure (INF)
 
-- [ ] **INF-01**: `tsx-tools.cjs` — CLI utilities adapted from gsd-tools.cjs for trading state management
+- [x] **INF-01**: `tsx-tools.cjs` — CLI utilities adapted from gsd-tools.cjs for trading state management
 - [ ] **INF-02**: Installer — Full framework install (commands, agents, workflows, templates, references)
 - [ ] **INF-03**: Installer — All 4 platforms (Claude Code, OpenCode, Codex CLI, Gemini CLI)
 - [ ] **INF-04**: Installer — GSD coexistence (tsx:* alongside gsd:* with zero conflicts)
@@ -159,7 +159,7 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 | TPL-05 | Phase 2 | Complete |
 | TPL-06 | Phase 2 | Complete |
 | TPL-07 | Phase 2 | Complete |
-| INF-01 | Phase 2 | Pending |
+| INF-01 | Phase 2 | Complete |
 | AGT-01 | Phase 3 | Pending |
 | AGT-02 | Phase 3 | Pending |
 | AGT-03 | Phase 3 | Pending |

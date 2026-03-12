@@ -13,7 +13,7 @@ TSX transforms a working npm skill package into a full GSD-style AI framework fo
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: References and Domain Knowledge** - Complete trading domain reference materials with safety patterns (completed 2026-03-11)
-- [ ] **Phase 2: Templates and State Tooling** - Output format standards and state management infrastructure
+- [x] **Phase 2: Templates and State Tooling** - Output format standards and state management infrastructure (completed 2026-03-11)
 - [ ] **Phase 3: Trading-Aware Agents** - All 12 agents adapted from GSD with trading domain context
 - [ ] **Phase 4: Core Execution Workflows** - GSD-adapted orchestration engine (plan, execute, verify, discuss)
 - [ ] **Phase 5: From-Scratch Workflow** - Trading-specific new-project questioning and generation flow
@@ -54,9 +54,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Adapt 24 top-level GSD templates with tsx naming and trading examples
-- [ ] 02-02-PLAN.md — Adapt 12 subdirectory GSD templates + create 7 new trading-specific templates
-- [ ] 02-03-PLAN.md — Adapt tsx-tools.cjs CLI utility with 11 lib modules
+- [x] 02-01-PLAN.md — Adapt 24 top-level GSD templates with tsx naming and trading examples
+- [x] 02-02-PLAN.md — Adapt 12 subdirectory GSD templates + create 7 new trading-specific templates
+- [x] 02-03-PLAN.md — Adapt tsx-tools.cjs CLI utility with 11 lib modules
 
 ### Phase 3: Trading-Aware Agents
 **Goal**: A complete roster of 12 trading-aware agents is available for workflow orchestration, each loading appropriate references and templates before executing
@@ -67,11 +67,13 @@ Plans:
   2. All 7 supporting agents exist (tsx-codebase-mapper, tsx-plan-checker, tsx-roadmapper, tsx-phase-researcher, tsx-research-synthesizer, tsx-integration-checker, tsx-nyquist-auditor) with trading-specific validation context
   3. Every agent follows GSD agent structure (role definition, execution flow, files_to_read, constraints) with only content specialization, not architectural divergence
   4. Agent frontmatter is portable across all 4 target platforms (Claude Code, OpenCode, Codex CLI, Gemini CLI)
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
+- [ ] 03-01-PLAN.md — Adapt 2 largest primary agents (tsx-planner, tsx-debugger) with deep trading injection
+- [ ] 03-02-PLAN.md — Adapt 3 remaining primary agents (tsx-executor, tsx-verifier, tsx-researcher) with trading domain awareness
+- [ ] 03-03-PLAN.md — Adapt 3 medium supporting agents (tsx-codebase-mapper, tsx-plan-checker, tsx-roadmapper) with trading context
+- [ ] 03-04-PLAN.md — Adapt 4 smaller supporting agents (tsx-phase-researcher, tsx-research-synthesizer, tsx-integration-checker, tsx-nyquist-auditor)
 
 ### Phase 4: Core Execution Workflows
 **Goal**: The framework's execution engine can discuss, plan, execute, and verify any trading phase using the wave-based parallel execution model
@@ -186,8 +188,8 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5/6/7 (parallel-eligible) -
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. References and Domain Knowledge | 3/3 | Complete   | 2026-03-11 |
-| 2. Templates and State Tooling | 0/3 | Not started | - |
-| 3. Trading-Aware Agents | 0/TBD | Not started | - |
+| 2. Templates and State Tooling | 3/3 | Complete   | 2026-03-11 |
+| 3. Trading-Aware Agents | 0/4 | Planned | - |
 | 4. Core Execution Workflows | 0/TBD | Not started | - |
 | 5. From-Scratch Workflow | 0/TBD | Not started | - |
 | 6. Language Adaptation Workflow | 0/TBD | Not started | - |
