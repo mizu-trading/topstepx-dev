@@ -2,16 +2,31 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: phase-3-complete
-stopped_at: Completed 03-01-PLAN.md (Phase 3 complete, all 4 plans done)
-last_updated: "2026-03-12T18:16:04Z"
-last_activity: "2026-03-12 -- Completed 03-01: tsx-planner and tsx-debugger agents (2 files, 2618 lines)"
+status: in-progress
+stopped_at: Completed 04-02-PLAN.md
+last_updated: "2026-03-12T19:12:14.564Z"
+last_activity: "2026-03-12 -- Completed 04-03: verify-work, verify-phase, diagnose-issues workflows (3 files, 1118 lines)"
 progress:
   total_phases: 10
-  completed_phases: 3
-  total_plans: 10
-  completed_plans: 10
-  percent: 100
+  completed_phases: 4
+  total_plans: 14
+  completed_plans: 14
+  percent: 93
+---
+
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+status: in-progress
+stopped_at: Completed 04-04-PLAN.md (Phase 4 complete, all 4 plans done)
+last_updated: "2026-03-12T19:09:24Z"
+last_activity: "2026-03-12 -- Completed 04-04: 26 utility workflows adapted (26 files, 7719 lines)"
+progress:
+  [█████████░] 93%
+  completed_phases: 4
+  total_plans: 14
+  completed_plans: 12
 ---
 
 # Project State
@@ -21,23 +36,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-11)
 
 **Core value:** AI agents can take any trading idea and produce a working, live-tradeable TopStepX integration by following TSX's guided workflows
-**Current focus:** Phase 3 complete -- ready for Phase 4 (Core Execution Workflows)
+**Current focus:** Phase 4 complete -- ready for Phase 5 (New Project Trading Workflow)
 
 ## Current Position
 
-Phase: 3 of 10 (Trading-Aware Agents) -- COMPLETE
-Plan: 4 of 4 in current phase (all complete)
-Status: Phase 3 complete
-Last activity: 2026-03-12 -- Completed 03-01: tsx-planner and tsx-debugger agents (2 files, 2618 lines)
+Phase: 4 of 10 (Core Execution Workflows)
+Plan: 3 of 4 in current phase (3 complete)
+Status: In progress
+Last activity: 2026-03-12 -- Completed 04-03: verify-work, verify-phase, diagnose-issues workflows (3 files, 1118 lines)
 
-Progress: [██████████] 100% (Overall: 10/10 plans complete)
+Progress: [████████░░] 79% (Overall: 11/14 plans complete)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 10
+- Total plans completed: 11
 - Average duration: 10min
-- Total execution time: 103min
+- Total execution time: 109min
 
 **By Phase:**
 
@@ -52,12 +67,14 @@ Progress: [██████████] 100% (Overall: 10/10 plans complete)
 | Phase 03 P02 | 8min | 2 tasks | 3 files |
 | Phase 03 P01 | 10min | 2 tasks | 2 files |
 | Phase 03 P04 | 7min | 2 tasks | 4 files |
+| Phase 04 P03 | 6min | 2 tasks | 3 files |
 
 **Recent Trend:**
-- Last 5 plans: 20min, 8min, 7min, 8min, 10min
-- Trend: Phase 3 agents are faster (static Markdown content, no tooling complexity)
+- Last 5 plans: 8min, 7min, 8min, 10min, 6min
+- Trend: Phase 4 workflows maintain fast pace (Markdown content adaptation)
 
 *Updated after each plan completion*
+| Phase 04 P02 | 7min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -102,6 +119,10 @@ Recent decisions affecting current work:
 - [03-01]: Trading domain injection added as inline enhancements to existing sections, not new mega-sections -- preserves GSD structural fidelity
 - [03-01]: Trading-specific must-haves guidance added to planner's goal_backward section for safety pattern compliance
 - [03-01]: Trading debug checklist added to debugger's investigation_techniques for systematic TopStepX API issue diagnosis
+- [04-03]: tsx-verifier automated pre-check step added before conversational UAT testing in verify-work
+- [04-03]: Trading-specific severity inference: missing safety patterns = blocker, wrong fill price = major, data delay = minor
+- [04-03]: Trading examples replace generic examples in diagnose-issues (bracket orders, SignalR, PineScript bar-close)
+- [Phase 04]: Consistent delegation chain: execute-phase references execute-plan.md via topstepx path, transition routes via /tsx: commands
 
 ### Pending Todos
 
@@ -109,10 +130,10 @@ None yet.
 
 ### Blockers/Concerns
 
-None -- Phase 3 complete, all 12 agents adapted.
+None -- Phase 4 in progress, 3 of 4 plans complete.
 
 ## Session Continuity
 
-Last session: 2026-03-12T18:16:04Z
-Stopped at: Completed 03-01-PLAN.md (Phase 3 complete, all 4 plans done)
+Last session: 2026-03-12T19:11:55.348Z
+Stopped at: Completed 04-02-PLAN.md
 Resume file: None
