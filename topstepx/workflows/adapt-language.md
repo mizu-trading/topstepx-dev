@@ -320,4 +320,335 @@ Library mapping (auto-approved):
 For unrecognized libraries in auto-mode:
 - Log a warning: `Warning: [library] has no automatic mapping. Marked as "manual mapping needed".`
 - Continue with best-effort mapping
+
+## 5. Adaptation Report Generation
+
+### Populate the Report Template
+
+Using data collected in Steps 2-4, populate the `@topstepx/templates/language-adaptation.md` template.
+
+Fill the following sections from the template:
+
+**Source Analysis table:**
+- Source Language, Target Language, Source Framework, Target Framework (from language profiles)
+- Source Lines of Code (from Step 2 file inventory)
+- TopStepX API Patterns (REST + WebSocket / REST only / WebSocket only, from Step 2)
+- Strategy Complexity (Simple / Moderate / Complex, based on indicator count and signal logic)
+
+**File Inventory table:**
+- Each source file mapped to its target file path
+- Purpose description for each file
+- Adaptation notes highlighting key changes needed
+
+**Library Mapping table:**
+- All mappings from Step 4, including installation commands
+- Source installation: `npm install [packages]` or `pip install [packages]`
+- Target installation: corresponding package manager command
+
+**API Pattern Mapping tables:**
+- Authentication: login, token storage, bearer header, token refresh timer
+- Order Placement: create order, bracket defaults, position sizing, error handling
+- WebSocket: connection creation, event handlers, invoke/send methods, reconnection, access token
+
+**Safety Preservation table:**
+- All SAF-01 through SAF-05 rows from the template
+- Source Present: based on Step 2 safety infrastructure findings
+- Target Present: will be "Pending" until Step 6 generates target code
+- Verified: will be "Pending" until Step 7 runs safety verification
+
+**Test Plan:**
+- Verification steps tailored to the specific source/target languages
+- Expected output comparison metrics
+
+**Adaptation Confidence:**
+- Library mapping accuracy: based on Step 4 results (HIGH if all libraries mapped, MEDIUM if some manual)
+- API pattern fidelity: based on Step 2 pattern coverage
+- Safety preservation: Pending (set after Step 7)
+- Strategy logic accuracy: based on indicator complexity from Step 2
+
+### Write the Report
+
+Write the populated report to `.planning/language-adaptation.md`:
+
+```bash
+# Write the adaptation report
+# (Content generated from template with Step 2-4 data)
+```
+
+### Interactive Mode: Offer Review
+
+Present a summary of the adaptation report:
+
+```
+Adaptation Report Generated
+============================
+Location: .planning/language-adaptation.md
+Source: [language] ([N] files, [N] lines)
+Target: [language]
+Libraries mapped: [N] (all mapped / [N] need manual mapping)
+Safety patterns found: [N]/10
+```
+
+Use AskUserQuestion:
+- header: "Adaptation Report"
+- question: "Review the adaptation report summary above. Ready to proceed with code generation?"
+- options:
+  - "Proceed with code generation" -- Generate target code based on this report
+  - "Let me review the full report first" -- Open .planning/language-adaptation.md for detailed review
+
+### Auto Mode: Proceed Without Review
+
+Log the report path and proceed:
+
+```
+Adaptation report written: .planning/language-adaptation.md
+Proceeding to code generation...
+```
+
+### Commit the Report
+
+```bash
+node "$HOME/.claude/topstepx/bin/tsx-tools.cjs" commit "docs: language adaptation report" --files .planning/language-adaptation.md
+```
+
+## 6. Code Generation
+
+**Generate target code file-by-file using the target language's bot scaffold as the structural base.**
+
+### Load Bot Scaffold
+
+Load the target language's bot scaffold template:
+- JavaScript/TypeScript target: `@topstepx/templates/bot-scaffold-js.md`
+- Python target: `@topstepx/templates/bot-scaffold-python.md`
+
+The scaffold provides the structural skeleton with all safety infrastructure (SAF-01 through SAF-05) already implemented. The workflow injects source strategy logic translated to target language idioms.
+
+### Conversion Order (MANDATORY -- Trading Build Order)
+
+Convert source code to target code in this exact order. This mirrors the proven trading build order established across TSX:
+
+**1. Safety infrastructure first:**
+- Enum constant definitions (OrderSide, OrderType, OrderStatus, PositionType, TimeInForce, BarTimeUnit)
+- Configuration constants (API URLs, risk parameters, environment variables)
+- Apply target language naming convention from profile (camelCase for JS, snake_case for Python)
+- Apply target language enum style from profile (plain objects for JS, IntEnum classes for Python)
+
+**2. Authentication:**
+- TokenManager class / token refresh mechanism
+- Login flow (POST to /api/Auth/loginKey)
+- Bearer header setup for all API calls
+- 23-hour proactive refresh timer (SAF-02)
+- Re-authentication fallback on refresh failure
+
+**3. Rate limiting:**
+- RateLimiter class with sliding window
+- RATE_LIMITS constants (HISTORY: 50/30s, GENERAL: 200/60s)
+- Wait-for-slot pattern before every API call
+- Apply target language async pattern from profile
+
+**4. REST API integration:**
+- Order placement function with bracket defaults (SAF-01: stopLossBracket, takeProfitBracket)
+- Position sizing enforcement via Math.min / min() (SAF-01)
+- Safe order placement with 3-mode error handling (SAF-05: 429 retry, rejection logging, connection error catch)
+- Account search, contract lookup, position query functions
+- History bar retrieval with history rate limiter
+
+**5. WebSocket integration:**
+- Market Hub connection with access token factory
+- User Hub connection with access token factory
+- Event handlers: GatewayQuote, GatewayOrder, GatewayPosition, GatewayTrade
+- Subscription calls: SubscribeContractQuotes, SubscribeAccounts, SubscribeOrders, SubscribePositions, SubscribeTrades
+- Reconnection handlers with automatic re-subscribe (SAF-05)
+- Apply target language SignalR client patterns from profile (HubConnectionBuilder for JS, SignalRClient for Python)
+
+**6. Strategy logic last:**
+- Indicator calculations translated to target language's indicator library
+- Signal evaluation functions with entry/exit conditions
+- Bar processing logic
+- Any custom strategy state management
+- Apply target language naming convention throughout
+
+### Apply Naming Conventions
+
+Use the target language profile's naming convention for ALL generated code:
+- **JavaScript/TypeScript:** camelCase for variables/functions, PascalCase for classes
+- **Python:** snake_case for variables/functions, PascalCase for classes
+
+### File Mapping
+
+Each source file maps to a target file, as documented in the adaptation report's File Inventory table:
+- Single-file source: generate single target file with appropriate extension
+- Multi-file source: generate corresponding target files preserving the module structure
+- File extensions: `.js`/`.ts`/`.mjs` -> `.py` (or vice versa)
+
+### Atomic Commits
+
+Commit each converted file individually as it is generated:
+
+```bash
+node "$HOME/.claude/topstepx/bin/tsx-tools.cjs" commit "feat: convert [filename] to [target language]" --files [target_file_path]
+```
+
+This ensures partial progress is preserved if the conversion is interrupted.
+
+## 7. Safety Verification
+
+**MANDATORY -- Conversion is BLOCKED until ALL safety checks pass.**
+
+This step runs in BOTH interactive and auto mode -- it is NEVER skipped.
+
+### Run Grep-Based Verification
+
+For each safety pattern, run grep verification against ALL generated target files. Use the target language profile to select the correct grep patterns.
+
+**For JavaScript/TypeScript target:**
+
+| Safety Pattern | Grep Command | Expected |
+|----------------|-------------|----------|
+| SAF-01: Enum constants | `grep -c "OrderSide\|OrderType\|OrderStatus\|PositionType\|TimeInForce" [target_files]` | >= 5 |
+| SAF-01: Bracket defaults | `grep -c "stopLossBracket\|takeProfitBracket" [target_files]` | >= 2 |
+| SAF-01: Position sizing | `grep -c "Math.min" [target_files]` | >= 1 |
+| SAF-02: JWT refresh | `grep -c "refreshToken\|refreshInterval\|23.*60.*60" [target_files]` | >= 1 |
+| SAF-03: Rate limiter | `grep -c "RateLimiter\|RATE_LIMITS\|waitForSlot" [target_files]` | >= 2 |
+| SAF-05: Error handling | `grep -c "placeOrderSafe\|status === 429\|\.catch\|try.*catch" [target_files]` | >= 2 |
+| SAF-05: Graceful shutdown | `grep -c "SIGINT\|SIGTERM\|shutdown" [target_files]` | >= 2 |
+
+**For Python target:**
+
+| Safety Pattern | Grep Command | Expected |
+|----------------|-------------|----------|
+| SAF-01: Enum constants | `grep -c "OrderSide\|OrderType\|OrderStatus\|PositionType\|TimeInForce\|IntEnum" [target_files]` | >= 5 |
+| SAF-01: Bracket defaults | `grep -c "stopLossBracket\|takeProfitBracket\|stop_loss\|take_profit" [target_files]` | >= 2 |
+| SAF-01: Position sizing | `grep -c "min(" [target_files]` | >= 1 |
+| SAF-02: JWT refresh | `grep -c "refresh_token\|refresh_interval\|23.*60.*60" [target_files]` | >= 1 |
+| SAF-03: Rate limiter | `grep -c "RateLimiter\|RATE_LIMITS\|wait_for_slot" [target_files]` | >= 2 |
+| SAF-05: Error handling | `grep -c "place_order_safe\|status == 429\|except\|try:" [target_files]` | >= 2 |
+| SAF-05: Graceful shutdown | `grep -c "SIGINT\|SIGTERM\|shutdown\|signal\." [target_files]` | >= 2 |
+
+**Note:** SAF-04 (PineScript Repainting Audit) is NOT checked here. It is specific to Phase 7's `adapt-pinescript` workflow and does not apply to language-to-language conversion.
+
+### Present Results
+
+Display the verification results as a pass/fail table:
+
+```
+Safety Verification Results
+============================
+
+| SAF Pattern | Check | Result |
+|-------------|-------|--------|
+| SAF-01: Enum constants | OrderSide, OrderType, etc. | PASS |
+| SAF-01: Bracket defaults | stopLossBracket, takeProfitBracket | PASS |
+| SAF-01: Position sizing | Math.min / min() | PASS |
+| SAF-02: JWT refresh | refreshToken, 23hr interval | PASS |
+| SAF-03: Rate limiter | RateLimiter, RATE_LIMITS | PASS |
+| SAF-05: Error handling | placeOrderSafe, 429 handling | PASS |
+| SAF-05: Graceful shutdown | SIGINT, SIGTERM, shutdown | PASS |
+
+Status: ALL PASSED
+Safety Confidence: HIGH
+```
+
+### If ANY Check FAILS
+
+**The conversion is INCOMPLETE. Do NOT proceed to Step 8.**
+
+For each failed check:
+1. Display the missing pattern with its SAF-ID
+2. Show what the pattern should look like in the target language (reference `@topstepx/references/safety-patterns.md` for the canonical implementation)
+3. Identify which target file should contain the pattern
+
+```
+SAFETY VERIFICATION FAILED
+============================
+
+FAILED: SAF-01 Bracket defaults
+  Missing: stopLossBracket / takeProfitBracket in target code
+  Expected: Order creation function must include bracket parameters
+  Reference: @topstepx/references/safety-patterns.md -> SAF-01 -> "Default bracket order pattern"
+  Fix in: [target_file_path]
+```
+
+**Loop back to Step 6** to fix the safety gap:
+- Add the missing safety pattern to the appropriate target file
+- Re-commit the fixed file
+- Re-run Step 7 safety verification
+
+Repeat until ALL checks PASS. The workflow CANNOT complete with any safety gap.
+
+### If ALL Checks PASS
+
+- Set safety confidence to **HIGH**
+- Update the Safety Preservation table in `.planning/language-adaptation.md`:
+  - Set all "Target Present" columns to "Yes"
+  - Set all "Verified" columns to "Yes"
+  - Set "Safety Gaps Found" section to "All safety patterns preserved in target language. No gaps."
+- Update Adaptation Confidence -> Safety preservation to **HIGH**
+- Commit the updated report:
+
+```bash
+node "$HOME/.claude/topstepx/bin/tsx-tools.cjs" commit "docs: update adaptation report with safety verification results" --files .planning/language-adaptation.md
+```
+
+- Proceed to Step 8
+
+## 8. Completion Summary
+
+### Display Completion Banner
+
+```
+--------------------------------------------------
+ TSX > LANGUAGE ADAPTATION COMPLETE
+--------------------------------------------------
+
+Source: [source language] -> Target: [target language]
+
+| Artifact | Location |
+|----------|----------|
+| Adaptation Report | .planning/language-adaptation.md |
+| Target Code | [list target file paths] |
+
+Safety Verification: ALL PASSED (SAF-01, SAF-02, SAF-03, SAF-05)
+Files Converted: [N] source files -> [N] target files
+Total Lines: [source lines] -> [target lines]
+
+--------------------------------------------------
+
+Next Steps:
+
+  /tsx:verify-work [phase]   -- Test the converted bot
+  /tsx:progress              -- Check project status
+
+--------------------------------------------------
+```
+
+### Commit Final State
+
+```bash
+node "$HOME/.claude/topstepx/bin/tsx-tools.cjs" commit "feat: language adaptation complete ([source] -> [target])" --files .planning/language-adaptation.md
+```
+
 </process>
+
+<output>
+
+## Generated Artifacts
+
+- `.planning/language-adaptation.md` -- Adaptation report (populated from `@topstepx/templates/language-adaptation.md`)
+- Converted target code files (paths documented in adaptation report File Inventory table)
+
+</output>
+
+<success_criteria>
+
+- [ ] Source code analyzed (REST, WebSocket, safety, strategy patterns identified)
+- [ ] Language profiles used for mapping (not hardcoded language pairs)
+- [ ] Library mapping confirmed (all source libraries mapped to target equivalents)
+- [ ] Adaptation report generated from `@topstepx/templates/language-adaptation.md` template -> committed
+- [ ] Target code generated in trading build order (safety first, strategy last)
+- [ ] Target code uses bot scaffold template as structural base
+- [ ] Safety verification PASSED for all SAF-01, SAF-02, SAF-03, SAF-05 patterns
+- [ ] All target files committed atomically
+- [ ] User knows next step (`/tsx:verify-work` or `/tsx:progress`)
+
+</success_criteria>
