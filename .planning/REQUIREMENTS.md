@@ -69,11 +69,11 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 
 **GSD-Adapted Core:**
 - [ ] **WKF-01**: `new-project` workflow — Trading-specific questioning, risk parameter gathering
-- [ ] **WKF-02**: `discuss-phase` workflow — Trading implementation context gathering
-- [ ] **WKF-03**: `plan-phase` workflow — Research + plan + verify for trading phases
+- [x] **WKF-02**: `discuss-phase` workflow — Trading implementation context gathering
+- [x] **WKF-03**: `plan-phase` workflow — Research + plan + verify for trading phases
 - [x] **WKF-04**: `execute-phase` workflow — Wave-based parallel execution with trading awareness
 - [x] **WKF-05**: `verify-work` workflow — UAT with trading-specific validation checks
-- [ ] **WKF-06**: All remaining GSD workflows adapted (pause, resume, progress, quick, debug, etc.)
+- [x] **WKF-06**: All remaining GSD workflows adapted (pause, resume, progress, quick, debug, etc.)
 
 **TSX-Specific:**
 - [ ] **WKF-07**: `adapt-language` workflow — Any-to-any language conversion for TopStepX code
@@ -172,11 +172,11 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 | AGT-10 | Phase 3 | Complete |
 | AGT-11 | Phase 3 | Complete |
 | AGT-12 | Phase 3 | Complete |
-| WKF-02 | Phase 4 | Pending |
-| WKF-03 | Phase 4 | Pending |
+| WKF-02 | Phase 4 | Complete |
+| WKF-03 | Phase 4 | Complete |
 | WKF-04 | Phase 4 | Complete |
 | WKF-05 | Phase 4 | Complete |
-| WKF-06 | Phase 4 | Pending |
+| WKF-06 | Phase 4 | Complete |
 | WKF-01 | Phase 5 | Pending |
 | WKF-07 | Phase 6 | Pending |
 | WKF-08 | Phase 7 | Pending |
