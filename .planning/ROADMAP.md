@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: References and Domain Knowledge** - Complete trading domain reference materials with safety patterns (completed 2026-03-11)
 - [x] **Phase 2: Templates and State Tooling** - Output format standards and state management infrastructure (completed 2026-03-11)
-- [ ] **Phase 3: Trading-Aware Agents** - All 12 agents adapted from GSD with trading domain context
+- [x] **Phase 3: Trading-Aware Agents** - All 12 agents adapted from GSD with trading domain context (completed 2026-03-12)
 - [ ] **Phase 4: Core Execution Workflows** - GSD-adapted orchestration engine (plan, execute, verify, discuss)
 - [ ] **Phase 5: From-Scratch Workflow** - Trading-specific new-project questioning and generation flow
 - [ ] **Phase 6: Language Adaptation Workflow** - Cross-language TopStepX code conversion
@@ -70,10 +70,10 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Adapt 2 largest primary agents (tsx-planner, tsx-debugger) with deep trading injection
-- [ ] 03-02-PLAN.md — Adapt 3 remaining primary agents (tsx-executor, tsx-verifier, tsx-researcher) with trading domain awareness
-- [ ] 03-03-PLAN.md — Adapt 3 medium supporting agents (tsx-codebase-mapper, tsx-plan-checker, tsx-roadmapper) with trading context
-- [ ] 03-04-PLAN.md — Adapt 4 smaller supporting agents (tsx-phase-researcher, tsx-research-synthesizer, tsx-integration-checker, tsx-nyquist-auditor)
+- [x] 03-01-PLAN.md — Adapt 2 largest primary agents (tsx-planner, tsx-debugger) with deep trading injection
+- [x] 03-02-PLAN.md — Adapt 3 remaining primary agents (tsx-executor, tsx-verifier, tsx-researcher) with trading domain awareness
+- [x] 03-03-PLAN.md — Adapt 3 medium supporting agents (tsx-codebase-mapper, tsx-plan-checker, tsx-roadmapper) with trading context
+- [x] 03-04-PLAN.md — Adapt 4 smaller supporting agents (tsx-phase-researcher, tsx-research-synthesizer, tsx-integration-checker, tsx-nyquist-auditor)
 
 ### Phase 4: Core Execution Workflows
 **Goal**: The framework's execution engine can discuss, plan, execute, and verify any trading phase using the wave-based parallel execution model
@@ -189,7 +189,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5/6/7 (parallel-eligible) -
 |-------|----------------|--------|-----------|
 | 1. References and Domain Knowledge | 3/3 | Complete   | 2026-03-11 |
 | 2. Templates and State Tooling | 3/3 | Complete   | 2026-03-11 |
-| 3. Trading-Aware Agents | 3/4 | In Progress|  |
+| 3. Trading-Aware Agents | 4/4 | Complete   | 2026-03-12 |
 | 4. Core Execution Workflows | 0/TBD | Not started | - |
 | 5. From-Scratch Workflow | 0/TBD | Not started | - |
 | 6. Language Adaptation Workflow | 0/TBD | Not started | - |
