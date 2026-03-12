@@ -52,18 +52,18 @@ Every GSD command gets a TSX equivalent (`/tsx:*` prefix).
 
 Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain context.
 
-- [ ] **AGT-01**: `tsx-executor` — Execute plans with trading domain awareness, loads API/PineScript refs
+- [x] **AGT-01**: `tsx-executor` — Execute plans with trading domain awareness, loads API/PineScript refs
 - [ ] **AGT-02**: `tsx-planner` — Create phase plans specialized for trading integrations
-- [ ] **AGT-03**: `tsx-researcher` — Research trading patterns, API capabilities, library options
-- [ ] **AGT-04**: `tsx-verifier` — Verify trading bot implementations against requirements
+- [x] **AGT-03**: `tsx-researcher` — Research trading patterns, API capabilities, library options
+- [x] **AGT-04**: `tsx-verifier` — Verify trading bot implementations against requirements
 - [ ] **AGT-05**: `tsx-debugger` — Debug trading-specific issues (API errors, WebSocket drops, order failures)
 - [ ] **AGT-06**: `tsx-codebase-mapper` — Analyze existing trading codebases
 - [ ] **AGT-07**: `tsx-plan-checker` — Validate plans achieve trading phase goals
 - [ ] **AGT-08**: `tsx-roadmapper` — Create roadmaps from trading requirements
-- [ ] **AGT-09**: `tsx-phase-researcher` — Research how to implement a trading phase
-- [ ] **AGT-10**: `tsx-research-synthesizer` — Synthesize trading domain research
-- [ ] **AGT-11**: `tsx-integration-checker` — Verify cross-phase integration for trading systems
-- [ ] **AGT-12**: `tsx-nyquist-auditor` — Validate test coverage for trading phases
+- [x] **AGT-09**: `tsx-phase-researcher` — Research how to implement a trading phase
+- [x] **AGT-10**: `tsx-research-synthesizer` — Synthesize trading domain research
+- [x] **AGT-11**: `tsx-integration-checker` — Verify cross-phase integration for trading systems
+- [x] **AGT-12**: `tsx-nyquist-auditor` — Validate test coverage for trading phases
 
 ### Workflows (WKF)
 
@@ -160,18 +160,18 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 | TPL-06 | Phase 2 | Complete |
 | TPL-07 | Phase 2 | Complete |
 | INF-01 | Phase 2 | Complete |
-| AGT-01 | Phase 3 | Pending |
+| AGT-01 | Phase 3 | Complete |
 | AGT-02 | Phase 3 | Pending |
-| AGT-03 | Phase 3 | Pending |
-| AGT-04 | Phase 3 | Pending |
+| AGT-03 | Phase 3 | Complete |
+| AGT-04 | Phase 3 | Complete |
 | AGT-05 | Phase 3 | Pending |
 | AGT-06 | Phase 3 | Pending |
 | AGT-07 | Phase 3 | Pending |
 | AGT-08 | Phase 3 | Pending |
-| AGT-09 | Phase 3 | Pending |
-| AGT-10 | Phase 3 | Pending |
-| AGT-11 | Phase 3 | Pending |
-| AGT-12 | Phase 3 | Pending |
+| AGT-09 | Phase 3 | Complete |
+| AGT-10 | Phase 3 | Complete |
+| AGT-11 | Phase 3 | Complete |
+| AGT-12 | Phase 3 | Complete |
 | WKF-02 | Phase 4 | Pending |
 | WKF-03 | Phase 4 | Pending |
 | WKF-04 | Phase 4 | Pending |

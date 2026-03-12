@@ -2,16 +2,31 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: phase-2-complete
-stopped_at: Completed 02-03-PLAN.md (Phase 2 complete, all 6 plans done)
-last_updated: "2026-03-11T20:15:00Z"
-last_activity: "2026-03-11 -- Completed 02-03: tsx-tools.cjs CLI tooling (12 files, 5996 lines)"
+status: in-progress
+stopped_at: Completed 03-04-PLAN.md
+last_updated: "2026-03-12T18:15:58.552Z"
+last_activity: "2026-03-12 -- Completed 03-04: 4 supporting agents (phase-researcher, synthesizer, integration-checker, nyquist-auditor)"
 progress:
   total_phases: 10
   completed_phases: 2
-  total_plans: 6
-  completed_plans: 6
-  percent: 100
+  total_plans: 10
+  completed_plans: 9
+  percent: 90
+---
+
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+status: in-progress
+stopped_at: Completed 03-04-PLAN.md
+last_updated: "2026-03-12T18:12:42Z"
+last_activity: "2026-03-12 -- Completed 03-04: 4 supporting agents (phase-researcher, synthesizer, integration-checker, nyquist-auditor)"
+progress:
+  [█████████░] 90%
+  completed_phases: 2
+  total_plans: 10
+  completed_plans: 8
 ---
 
 # Project State
@@ -21,23 +36,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-11)
 
 **Core value:** AI agents can take any trading idea and produce a working, live-tradeable TopStepX integration by following TSX's guided workflows
-**Current focus:** Phase 2 complete -- ready for Phase 3 (Agent Profiles)
+**Current focus:** Phase 3 in progress -- Trading-Aware Agents
 
 ## Current Position
 
-Phase: 2 of 10 (Templates and State Tooling) -- COMPLETE
-Plan: 3 of 3 in current phase (all complete)
-Status: Phase 2 complete
-Last activity: 2026-03-11 -- Completed 02-03: tsx-tools.cjs CLI tooling (12 files, 5996 lines)
+Phase: 3 of 10 (Trading-Aware Agents) -- IN PROGRESS
+Plan: 4 of 4 in current phase (03-04 complete; 03-01, 03-02, 03-03 also executing in parallel)
+Status: Phase 3 in progress
+Last activity: 2026-03-12 -- Completed 03-04: 4 supporting agents (phase-researcher, synthesizer, integration-checker, nyquist-auditor)
 
-Progress: [██████████] 100% (Overall: 6/6 plans complete)
+Progress: [████████░░] 80% (Overall: 8/10 plans complete)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
-- Average duration: 12min
-- Total execution time: 70min
+- Total plans completed: 8
+- Average duration: 11min
+- Total execution time: 84min
 
 **By Phase:**
 
@@ -49,10 +64,12 @@ Progress: [██████████] 100% (Overall: 6/6 plans complete)
 | Phase 02 P01 | 16min | 2 tasks | 24 files |
 | Phase 02 P02 | 14min | 2 tasks | 19 files |
 | Phase 02 P03 | 20min | 2 tasks | 12 files |
+| Phase 03 P02 | 8min | 2 tasks | 3 files |
+| Phase 03 P04 | 7min | 2 tasks | 4 files |
 
 **Recent Trend:**
-- Last 5 plans: 8min, 8min, 16min, 14min, 20min
-- Trend: stable (larger file counts and line counts in Phase 2 tooling work)
+- Last 5 plans: 8min, 16min, 14min, 20min, 7min
+- Trend: Phase 3 agents are faster (static Markdown content, no tooling complexity)
 
 *Updated after each plan completion*
 
@@ -87,6 +104,12 @@ Recent decisions affecting current work:
 - [02-03]: tsx-* model profile keys match 1:1 with gsd-* keys (12 agent types preserved)
 - [02-03]: ~/.tsx/ user config path provides clean separation from ~/.gsd/
 - [02-03]: /tsx: command references replace /gsd: in scaffold and verification content
+- [03-04]: tsx-integration-checker gets the deepest trading injection among the 4 supporting agents (auth, order, data, safety flow verification)
+- [03-04]: tsx-nyquist-auditor and tsx-research-synthesizer get lightest touch -- primarily naming changes with minimal trading context
+- [03-04]: tsx-phase-researcher includes domain reference loading for TOPSTEPX_API.md, PINESCRIPT.md, safety-patterns.md
+- [03-02]: Trading safety deviations (bracket removal, bare enums, JWT skip, rate limit exceed) classified as never-acceptable in tsx-executor deviation rules
+- [03-02]: tsx-verifier includes full trading verification checklist with grep-able patterns for enum constants, bracket orders, JWT refresh, rate limits, SignalR config, and PineScript bar-close
+- [03-02]: tsx-researcher gets dedicated trading domain references section in tool strategy (TopStepX API, PineScript, safety-patterns) as priority 4 after Context7/docs/WebSearch
 
 ### Pending Todos
 
@@ -94,10 +117,10 @@ None yet.
 
 ### Blockers/Concerns
 
-None -- Phase 2 complete, tsx-tools.cjs blocker resolved.
+None -- Phase 3 agents executing in parallel.
 
 ## Session Continuity
 
-Last session: 2026-03-11
-Stopped at: Completed 02-03-PLAN.md (Phase 2 complete, all 6 plans done)
+Last session: 2026-03-12
+Stopped at: Completed 03-04-PLAN.md
 Resume file: None

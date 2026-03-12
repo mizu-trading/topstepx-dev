@@ -189,7 +189,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5/6/7 (parallel-eligible) -
 |-------|----------------|--------|-----------|
 | 1. References and Domain Knowledge | 3/3 | Complete   | 2026-03-11 |
 | 2. Templates and State Tooling | 3/3 | Complete   | 2026-03-11 |
-| 3. Trading-Aware Agents | 0/4 | Planned | - |
+| 3. Trading-Aware Agents | 3/4 | In Progress|  |
 | 4. Core Execution Workflows | 0/TBD | Not started | - |
 | 5. From-Scratch Workflow | 0/TBD | Not started | - |
 | 6. Language Adaptation Workflow | 0/TBD | Not started | - |
