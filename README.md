@@ -1,19 +1,40 @@
-# TopStepX API Plugin for Claude Code
+# TopStepX API Skill
 
-A Claude Code plugin that teaches Claude how to build integrations with the [TopStepX](https://topstepx.com) (ProjectX Gateway) trading API in any programming language.
+An AI coding skill that teaches coding assistants how to build integrations with the [TopStepX](https://topstepx.com) (ProjectX Gateway) trading API in any programming language.
+
+Works with **Claude Code**, **OpenCode**, **Codex CLI**, and **Gemini CLI**.
 
 ## Installation
 
 ```bash
-git clone https://github.com/mizu-trading/topstepx-skill.git
-claude mcp add-plugin topstepx-api -- /path/to/topstepx-skill
+npx topstepx-skill
 ```
 
-See [full installation options](#installation-options) below.
+The installer will ask which platform(s) and whether to install globally or locally.
+
+### Non-interactive
+
+```bash
+npx topstepx-skill --claude --global     # Claude Code, all projects
+npx topstepx-skill --codex --local       # Codex CLI, current project
+npx topstepx-skill --all --global        # All platforms, all projects
+```
+
+### Flags
+
+| Flag | Description |
+|------|-------------|
+| `--claude` | Install for Claude Code |
+| `--opencode` | Install for OpenCode |
+| `--codex` | Install for Codex CLI |
+| `--gemini` | Install for Gemini CLI |
+| `--all` | Install for all platforms |
+| `--global` | Install to user home directory |
+| `--local` | Install to current project |
 
 ## What It Does
 
-When you mention TopStepX in a conversation, Claude automatically gains full knowledge of the API — authentication, REST endpoints, real-time WebSocket streaming, enums, and best practices. It can then generate correct integration code in Python, JavaScript, C#, Go, Rust, or any other language.
+When you mention TopStepX in a conversation, your AI assistant automatically gains full knowledge of the API and can generate correct integration code in Python, JavaScript, C#, Go, Rust, or any other language.
 
 **Covers the full API surface:**
 
@@ -26,46 +47,6 @@ When you mention TopStepX in a conversation, Claude automatically gains full kno
 - Trade history
 - Real-time streaming via SignalR WebSockets (User Hub + Market Hub)
 
-## Installation Options
-
-### Option 1: Add to your project (recommended)
-
-Add the plugin to a specific project so it activates whenever you work in that directory:
-
-```bash
-claude mcp add-plugin topstepx-api -- https://github.com/mizu-trading/topstepx-skill
-```
-
-Or clone it locally and point to the directory:
-
-```bash
-git clone https://github.com/mizu-trading/topstepx-skill.git
-claude mcp add-plugin topstepx-api -- /path/to/topstepx-skill
-```
-
-### Option 2: Install globally
-
-Install for all projects on your machine. Add the following to your global Claude Code settings at `~/.claude/plugins.json`:
-
-```json
-{
-  "plugins": [
-    {
-      "name": "topstepx-api",
-      "path": "/path/to/topstepx-skill"
-    }
-  ]
-}
-```
-
-### Option 3: Test locally (one-off session)
-
-Run Claude Code with the plugin for a single session:
-
-```bash
-claude --plugin-dir /path/to/topstepx-skill
-```
-
 ## Usage
 
 Just mention TopStepX naturally in your conversation:
@@ -75,24 +56,27 @@ Just mention TopStepX naturally in your conversation:
 - "Help me place a bracket order on TopStepX using JavaScript"
 - "How do I authenticate with the ProjectX Gateway API?"
 
-The skill activates automatically — no slash commands needed.
+The skill activates automatically.
 
-## Plugin Structure
+## Skill Structure
 
 ```
-topstepx-skill/
-├── .claude-plugin/
-│   └── plugin.json                     # Plugin manifest
-├── skills/
-│   └── topstepx-api/
-│       ├── SKILL.md                    # Core API reference (auto-loaded)
-│       └── references/
-│           ├── rest-api.md             # Full REST endpoint documentation
-│           ├── realtime.md             # SignalR WebSocket reference
-│           └── enums.md               # Enum definitions
-├── LICENSE
-└── README.md
+skills/topstepx-api/
+├── SKILL.md                # Core API reference (auto-loaded on activation)
+└── references/
+    ├── rest-api.md         # Full REST endpoint documentation
+    ├── realtime.md         # SignalR WebSocket reference
+    └── enums.md            # Enum definitions
 ```
+
+## Supported Platforms
+
+| Platform | Project Location | Global Location |
+|----------|-----------------|-----------------|
+| Claude Code | `.claude/skills/topstepx-api/` | `~/.claude/skills/topstepx-api/` |
+| OpenCode | `.opencode/skills/topstepx-api/` | `~/.config/opencode/skills/topstepx-api/` |
+| Codex CLI | `.agents/skills/topstepx-api/` | `~/.agents/skills/topstepx-api/` |
+| Gemini CLI | `.gemini/skills/topstepx-api/` | `~/.gemini/skills/topstepx-api/` |
 
 ## License
 

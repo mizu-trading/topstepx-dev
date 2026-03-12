@@ -76,7 +76,7 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 - [x] **WKF-06**: All remaining GSD workflows adapted (pause, resume, progress, quick, debug, etc.)
 
 **TSX-Specific:**
-- [ ] **WKF-07**: `adapt-language` workflow — Any-to-any language conversion for TopStepX code
+- [x] **WKF-07**: `adapt-language` workflow — Any-to-any language conversion for TopStepX code
 - [ ] **WKF-08**: `adapt-pinescript` workflow — PineScript → TopStepX live trading bot conversion
 
 ### Templates (TPL)
@@ -178,7 +178,7 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 | WKF-05 | Phase 4 | Complete |
 | WKF-06 | Phase 4 | Complete |
 | WKF-01 | Phase 5 | Complete |
-| WKF-07 | Phase 6 | Pending |
+| WKF-07 | Phase 6 | Complete |
 | WKF-08 | Phase 7 | Pending |
 | CMD-01 | Phase 8 | Pending |
 | CMD-02 | Phase 8 | Pending |

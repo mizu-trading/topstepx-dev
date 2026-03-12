@@ -116,10 +116,10 @@ Plans:
   2. The workflow maps source libraries to idiomatic target-language equivalents (e.g., @microsoft/signalr to pysignalr, trading-signals to pandas-ta)
   3. The workflow generates target code that preserves all trading logic, API integration patterns, and risk guardrails from the source
   4. The workflow uses language profiles (not hardcoded language pairs) so adding new language support requires only a new profile, not branching logic
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 06-01: TBD
+- [ ] 06-01-PLAN.md — Create adapt-language.md workflow with language profiles, source analysis, conversion, and safety verification gate
 
 ### Phase 7: PineScript Conversion Workflow
 **Goal**: A user can take a TradingView PineScript strategy and get a working, live-tradeable TopStepX bot with safety guardrails
@@ -194,7 +194,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5/6/7 (parallel-eligible) -
 | 3. Trading-Aware Agents | 4/4 | Complete   | 2026-03-12 |
 | 4. Core Execution Workflows | 4/4 | Complete | 2026-03-12 |
 | 5. From-Scratch Workflow | 0/1 | Planned | - |
-| 6. Language Adaptation Workflow | 0/TBD | Not started | - |
+| 6. Language Adaptation Workflow | 0/1 | Planned | - |
 | 7. PineScript Conversion Workflow | 0/TBD | Not started | - |
 | 8. Core Commands | 0/TBD | Not started | - |
 | 9. Extended Commands | 0/TBD | Not started | - |

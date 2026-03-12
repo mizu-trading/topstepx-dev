@@ -16,20 +16,21 @@ AI agents can take any trading idea — whether from scratch, existing code, or 
 - ✓ TopStepX API reference documentation (REST + WebSocket + enums) — existing
 - ✓ npm package distribution with zero dependencies — existing
 - ✓ Interactive and non-interactive CLI modes — existing
+- ✓ Complete trading domain reference materials with safety patterns — Phase 1
+- ✓ Reference materials (TOPSTEPX_API.md, PINESCRIPT.md) loaded by agents before building — Phase 1
+- ✓ Agent definitions adapted from GSD for trading domain (executor, planner, researcher, verifier, debugger) — Phase 3
+- ✓ Workflow templates specialized for trading artifacts (strategy specs, risk parameters, backtest reports, API integration plans) — Phase 2
+- ✓ "From scratch" workflow — full questioning → research → plan → execute → verify cycle for new TopStepX integrations — Phase 5
+- ✓ Each workflow feels native to GSD — same patterns, same quality gates, same state management — Phase 4
 
 ### Active
 
 - [ ] GSD-style command system (`/tsx:*` commands) that lives alongside `/gsd:*`
-- [ ] Agent definitions adapted from GSD for trading domain (executor, planner, researcher, verifier, debugger)
-- [ ] "From scratch" workflow — full questioning → research → plan → execute → verify cycle for new TopStepX integrations
 - [ ] "Language adaptation" workflow — convert existing TopStepX code from any language to any other
 - [ ] "PineScript conversion" workflow — turn TradingView PineScript strategies into live TopStepX trading bots
-- [ ] Workflow templates specialized for trading artifacts (strategy specs, risk parameters, backtest reports, API integration plans)
-- [ ] Reference materials (TOPSTEPX_API.md, PINESCRIPT.md) loaded by agents before building
 - [ ] Installer adapted to copy commands, agents, workflows, templates, and references (matching GSD's install pattern)
 - [ ] README, package.json, and all branding updated from simple skill to full framework
 - [ ] GSD credited in README, package.json, and LICENSE
-- [ ] Each workflow feels native to GSD — same patterns, same quality gates, same state management
 
 ### Out of Scope
 
@@ -48,6 +49,8 @@ AI agents can take any trading idea — whether from scratch, existing code, or 
 **TopStepX API:** REST API at `api.topstepx.com` + SignalR WebSocket hubs at `rtc.topstepx.com`. Covers authentication (JWT), accounts, contracts, orders (market/limit/stop/trailing with brackets), positions, trades, and real-time streaming (quotes, depth, user events). All POST endpoints, JSON payloads.
 
 **PineScript:** TradingView's domain-specific language for trading strategies. Version 6 current. Key concepts: bar-by-bar execution, `strategy.*` functions for entries/exits/position management, `ta.*` for technical analysis, time series model. The conversion workflow must map PineScript's declarative strategy logic to TopStepX's imperative REST/WebSocket API calls.
+
+**Phase 1 complete:** All reference materials built — TOPSTEPX_API.md (1114 lines), PINESCRIPT.md (526 lines), safety-patterns.md (481 lines), checkpoints.md (901 lines), verification-patterns.md (774 lines), plus 7 adapted GSD references with tsx naming. Verified 5/5 must-haves, 9/9 requirements.
 
 **Existing concerns:** No test suite (0% coverage), no .gitignore, no input validation on installer flags, Node.js 16 floor should be 18+.
 
@@ -72,4 +75,4 @@ AI agents can take any trading idea — whether from scratch, existing code, or 
 | Adapt GSD installer pattern (commands + agents + workflows + templates) | Full framework distribution, not just reference docs | — Pending |
 
 ---
-*Last updated: 2026-03-11 after initialization*
+*Last updated: 2026-03-12 after Phase 5*

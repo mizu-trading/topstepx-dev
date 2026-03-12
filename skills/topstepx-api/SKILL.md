@@ -1,13 +1,15 @@
 ---
-name: TopStepX API
+name: topstepx-api
 description: >
-  This skill should be used when the user asks to "build a TopStepX integration",
-  "connect to the TopStepX API", "use the ProjectX Gateway API", "create a trading bot for TopStepX",
-  "place orders on TopStepX", "get market data from TopStepX", "stream real-time data from TopStepX",
-  "authenticate with TopStepX", "build a TopStep trading app", or mentions TopStepX, ProjectX,
-  or TopStep in the context of trading API development. Provides complete API reference for
-  generating correct integration code in any programming language.
-version: 1.0.0
+  Use when building TopStepX integrations, connecting to the TopStepX or ProjectX Gateway API,
+  creating trading bots for TopStepX, placing orders, streaming real-time market data via SignalR,
+  or any mention of TopStepX/ProjectX in a trading API context. Provides complete REST and
+  WebSocket API reference for generating correct integration code in any programming language.
+license: MIT
+compatibility: Requires network access to api.topstepx.com and rtc.topstepx.com
+metadata:
+  author: mizu-trading
+  version: "1.0.0"
 ---
 
 # TopStepX (ProjectX Gateway) API
