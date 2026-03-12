@@ -664,10 +664,13 @@ Subsequent: Research what's needed to add [target features] to an existing [doma
 
 <question>
 What's the standard 2025 stack for [domain]?
+
+For trading bots: "What's the standard 2025 stack for [specific trading strategy] on [specific instrument] using the TopStepX API?" Include SignalR client libraries, indicator calculation libraries (trading-signals for JS, pandas-ta for Python), HTTP client choices, and WebSocket connection management.
 </question>
 
 <files_to_read>
 - {project_path} (Project context and goals)
+- .planning/strategy-spec.md (Strategy specification - if exists)
 </files_to_read>
 
 <downstream_consumer>
@@ -702,10 +705,13 @@ Subsequent: How do [target features] typically work? What's expected behavior?
 
 <question>
 What features do [domain] products have? What's table stakes vs differentiating?
+
+For trading bots: "What features do [trading bot type] bots need? Table stakes: authentication, real-time data streaming, order placement with brackets, position tracking, error recovery. What differentiates a robust trading bot from a fragile one?"
 </question>
 
 <files_to_read>
 - {project_path} (Project context)
+- .planning/strategy-spec.md (Strategy specification - if exists)
 </files_to_read>
 
 <downstream_consumer>
@@ -740,10 +746,13 @@ Subsequent: How do [target features] integrate with existing [domain] architectu
 
 <question>
 How are [domain] systems typically structured? What are major components?
+
+For trading bots: "How are [trading bot type] bots typically structured? Components: auth manager, data feed handler, strategy engine, order manager, risk manager, event loop. How do these components communicate and what's the data flow from market data to order placement?"
 </question>
 
 <files_to_read>
 - {project_path} (Project context)
+- .planning/strategy-spec.md (Strategy specification - if exists)
 </files_to_read>
 
 <downstream_consumer>
@@ -778,10 +787,13 @@ Subsequent: What are common mistakes when adding [target features] to [domain]?
 
 <question>
 What do [domain] projects commonly get wrong? Critical mistakes?
+
+For trading bots: "What do [trading bot type] projects commonly get wrong? Critical: missing bracket orders on entries, bare enum integers instead of named constants, stale JWT tokens dropping WebSocket connections, rate limit violations causing 429 errors, repainting signals from PineScript conversion."
 </question>
 
 <files_to_read>
 - {project_path} (Project context)
+- .planning/strategy-spec.md (Strategy specification - if exists)
 </files_to_read>
 
 <downstream_consumer>
@@ -827,6 +839,8 @@ Commit after writing.
 ", subagent_type="tsx-research-synthesizer", model="{synthesizer_model}", description="Synthesize research")
 ```
 
+**Trading research note:** For trading projects, research prompts should be filled with specific trading context from the strategy specification (`.planning/strategy-spec.md`), not generic domain placeholders. Replace `[domain]` with specifics like "ES futures EMA crossover trend-following bot" rather than just "trading bot."
+
 Display research complete banner and key findings:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -860,16 +874,61 @@ Read PROJECT.md and extract:
 - Stated constraints (budget, timeline, tech limitations)
 - Any explicit scope boundaries
 
+**Load trading artifacts:** Read `.planning/strategy-spec.md` and `.planning/risk-parameters.md` (created in Step 4) as context for requirements generation. These contain the specific strategy details and risk constraints that requirements must implement.
+
 **If research exists:** Read research/FEATURES.md and extract feature categories.
 
 **If auto mode:**
 - Auto-include all table stakes features (users expect these)
+- Auto-include all SAF-* and RSK-* requirements with conservative defaults (non-optional for any trading bot)
+- Auto-include API-* and RTD-* as table stakes for TopStepX integration
+- Auto-include STR-* requirements derived from the strategy specification
 - Include features explicitly mentioned in provided document
 - Auto-defer differentiators not mentioned in document
 - Skip per-category AskUserQuestion loops
 - Skip "Any additions?" question
 - Skip requirements approval gate
 - Generate REQUIREMENTS.md and commit directly
+
+**Trading requirement categories:**
+
+For trading bot projects, use these requirement categories instead of generic ones (Authentication, Content, Social):
+
+**API Integration (API-*):** Authentication, account search, contract lookup, order placement, position management
+- Example: `API-01`: Bot authenticates with TopStepX via API key login
+- Example: `API-02`: Bot maintains JWT token with proactive 23-hour refresh (SAF-02)
+- Example: `API-03`: Bot searches and selects correct trading account
+- Example: `API-04`: Bot looks up contract details for target instrument
+
+**Strategy Logic (STR-*):** Indicator calculation, signal generation, entry/exit rules, bar management
+- Example: `STR-01`: Bot calculates [indicator] on [timeframe] bars
+- Example: `STR-02`: Bot detects [entry signal] on confirmed bars only
+- Example: `STR-03`: Bot places [order type] with bracket orders on signal
+
+**Risk Management (RSK-*):** Position sizing, daily loss limits, kill switch, bracket orders
+- Example: `RSK-01`: Bot enforces max position size of [N] contracts
+- Example: `RSK-02`: Bot stops trading when daily loss exceeds [$amount]
+- Example: `RSK-03`: Bot includes stop-loss and take-profit brackets on every order
+- Example: `RSK-04`: Bot activates kill switch on [conditions]
+
+**Real-time Data (RTD-*):** WebSocket connection, quote streaming, order events, position events
+- Example: `RTD-01`: Bot streams live quotes via Market Hub WebSocket
+- Example: `RTD-02`: Bot receives order fill/reject events via User Hub
+- Example: `RTD-03`: Bot handles WebSocket reconnection with re-subscription
+
+**Safety Infrastructure (SAF-*):** Enum constants, JWT refresh, rate limiting, error handling
+- Example: `SAF-01`: All API enums use named constants (never bare integers)
+- Example: `SAF-02`: Rate limiting enforced per endpoint category (history: 50/30s, general: 200/60s)
+- Example: `SAF-03`: Error handling covers rate limited (429), rejected, and connection failure modes
+
+**Bot Lifecycle (BOT-*):** Startup sequence, shutdown sequence, logging, deployment
+- Example: `BOT-01`: Bot startup authenticates, discovers account/contract, connects WebSocket, then enters trading loop
+- Example: `BOT-02`: Bot shutdown flattens positions, cancels orders, disconnects cleanly
+- Example: `BOT-03`: Bot logs all trades, signals, and account state changes
+
+**Safety requirements (SAF-*) and Risk Management (RSK-*) are NON-OPTIONAL.** Even if the user doesn't mention them, include them with defaults from `safety-patterns.md`. These are table stakes for any trading bot.
+
+**Generic category fallback:** For non-trading projects, the generic categories below still apply:
 
 **Present features by category (interactive mode only):**
 
@@ -913,15 +972,15 @@ For each category, use AskUserQuestion:
 - question: "Which [category] features are in v1?"
 - multiSelect: true
 - options:
-  - "[Feature 1]" — [brief description]
-  - "[Feature 2]" — [brief description]
-  - "[Feature 3]" — [brief description]
-  - "None for v1" — Defer entire category
+  - "[Feature 1]" -- [brief description]
+  - "[Feature 2]" -- [brief description]
+  - "[Feature 3]" -- [brief description]
+  - "None for v1" -- Defer entire category
 
 Track responses:
-- Selected features → v1 requirements
-- Unselected table stakes → v2 (users expect these)
-- Unselected differentiators → out of scope
+- Selected features -> v1 requirements
+- Unselected table stakes -> v2 (users expect these)
+- Unselected differentiators -> out of scope
 
 **Identify gaps:**
 
@@ -929,8 +988,8 @@ Use AskUserQuestion:
 - header: "Additions"
 - question: "Any requirements research missed? (Features specific to your vision)"
 - options:
-  - "No, research covered it" — Proceed
-  - "Yes, let me add some" — Capture additions
+  - "No, research covered it" -- Proceed
+  - "Yes, let me add some" -- Capture additions
 
 **Validate core value:**
 
@@ -944,19 +1003,19 @@ Create `.planning/REQUIREMENTS.md` with:
 - Out of Scope (explicit exclusions with reasoning)
 - Traceability section (empty, filled by roadmap)
 
-**REQ-ID format:** `[CATEGORY]-[NUMBER]` (AUTH-01, CONTENT-02)
+**REQ-ID format:** `[CATEGORY]-[NUMBER]` (API-01, STR-02, RSK-03, RTD-01, SAF-01, BOT-01)
 
 **Requirement quality criteria:**
 
 Good requirements are:
-- **Specific and testable:** "User can reset password via email link" (not "Handle password reset")
-- **User-centric:** "User can X" (not "System does Y")
-- **Atomic:** One capability per requirement (not "User can login and manage profile")
+- **Specific and testable:** "Bot places market order with 20-tick stop-loss bracket on EMA crossover signal" (not "Handle order placement")
+- **User-centric:** "Bot does X" (not "System does Y")
+- **Atomic:** One capability per requirement (not "Bot places orders and manages risk")
 - **Independent:** Minimal dependencies on other requirements
 
 Reject vague requirements. Push for specificity:
-- "Handle authentication" → "User can log in with email/password and stay logged in across sessions"
-- "Support sharing" → "User can share post via link that opens in recipient's browser"
+- "Handle authentication" -> "Bot authenticates with TopStepX API via loginKey and maintains JWT token with 23-hour proactive refresh"
+- "Support risk management" -> "Bot enforces max 1 contract position size, $1,600 daily loss limit, and activates kill switch on limit breach"
 
 **Present full requirements list (interactive mode only):**
 
@@ -965,14 +1024,31 @@ Show every requirement (not counts) for user confirmation:
 ```
 ## v1 Requirements
 
-### Authentication
-- [ ] **AUTH-01**: User can create account with email/password
-- [ ] **AUTH-02**: User can log in and stay logged in across sessions
-- [ ] **AUTH-03**: User can log out from any page
+### API Integration
+- [ ] **API-01**: Bot authenticates with TopStepX via API key login
+- [ ] **API-02**: Bot maintains JWT token with proactive 23-hour refresh
+- [ ] **API-03**: Bot searches and selects correct trading account
 
-### Content
-- [ ] **CONT-01**: User can create posts with text
-- [ ] **CONT-02**: User can edit their own posts
+### Strategy Logic
+- [ ] **STR-01**: Bot calculates [indicators] on [timeframe] bars
+- [ ] **STR-02**: Bot detects [entry signal] on confirmed bars
+
+### Risk Management
+- [ ] **RSK-01**: Bot enforces max position size of [N] contracts
+- [ ] **RSK-02**: Bot stops trading when daily loss exceeds [$amount]
+- [ ] **RSK-03**: Bot includes stop-loss and take-profit brackets on every order
+
+### Real-time Data
+- [ ] **RTD-01**: Bot streams live quotes via Market Hub WebSocket
+- [ ] **RTD-02**: Bot receives order fill/reject events via User Hub
+
+### Safety Infrastructure
+- [ ] **SAF-01**: All API enums use named constants (never bare integers)
+- [ ] **SAF-02**: Rate limiting enforced per endpoint category
+
+### Bot Lifecycle
+- [ ] **BOT-01**: Bot startup sequence: auth -> account -> contract -> WebSocket -> trade
+- [ ] **BOT-02**: Bot shutdown flattens positions and disconnects cleanly
 
 [... full list ...]
 
@@ -1023,6 +1099,8 @@ Create roadmap:
 4. Validate 100% coverage
 5. Write files immediately (ROADMAP.md, STATE.md, update REQUIREMENTS.md traceability)
 6. Return ROADMAP CREATED with summary
+
+For trading projects, the typical build order is: API authentication and account setup first, then real-time data streaming, then strategy logic, then risk management, then bot lifecycle. Phase 1 should set up API authentication and data streaming as the foundation everything else depends on.
 
 Write files first, then return. This ensures artifacts persist even if context is lost.
 </instructions>
@@ -1130,13 +1208,18 @@ Present completion summary:
 
 **[Project Name]**
 
-| Artifact       | Location                    |
-|----------------|-----------------------------|
-| Project        | `.planning/PROJECT.md`      |
-| Config         | `.planning/config.json`     |
-| Research       | `.planning/research/`       |
-| Requirements   | `.planning/REQUIREMENTS.md` |
-| Roadmap        | `.planning/ROADMAP.md`      |
+| Artifact       | Location                       |
+|----------------|--------------------------------|
+| Project        | `.planning/PROJECT.md`         |
+| Strategy Spec  | `.planning/strategy-spec.md`   |
+| Risk Params    | `.planning/risk-parameters.md` |
+| Config         | `.planning/config.json`        |
+| Research       | `.planning/research/`          |
+| Requirements   | `.planning/REQUIREMENTS.md`    |
+| Roadmap        | `.planning/ROADMAP.md`         |
+
+**Strategy:** [strategy name] ([type]) on [instrument]
+**Risk:** [max position] contracts, [$max daily loss] daily limit, brackets [always/custom]
 
 **[N] phases** | **[X] requirements** | Ready to build ✓
 ```
@@ -1156,18 +1239,21 @@ Exit skill and invoke SlashCommand("/tsx:discuss-phase 1 --auto")
 ```
 ───────────────────────────────────────────────────────────────
 
-## ▶ Next Up
+## Next Up
 
-**Phase 1: [Phase Name]** — [Goal from ROADMAP.md]
+**Phase 1: [Phase Name]** -- [Goal from ROADMAP.md]
 
-/tsx:discuss-phase 1 — gather context and clarify approach
+For trading bots, Phase 1 typically sets up API authentication and
+data streaming -- the foundation everything else depends on.
 
-<sub>/clear first → fresh context window</sub>
+/tsx:discuss-phase 1 -- gather context and clarify approach
+
+<sub>/clear first -> fresh context window</sub>
 
 ---
 
 **Also available:**
-- /tsx:plan-phase 1 — skip discussion, plan directly
+- /tsx:plan-phase 1 -- skip discussion, plan directly
 
 ───────────────────────────────────────────────────────────────
 ```
@@ -1177,6 +1263,8 @@ Exit skill and invoke SlashCommand("/tsx:discuss-phase 1 --auto")
 <output>
 
 - `.planning/PROJECT.md`
+- `.planning/strategy-spec.md` (trading strategy specification)
+- `.planning/risk-parameters.md` (trading risk parameters)
 - `.planning/config.json`
 - `.planning/research/` (if research selected)
   - `STACK.md`
@@ -1196,12 +1284,16 @@ Exit skill and invoke SlashCommand("/tsx:discuss-phase 1 --auto")
 - [ ] Git repo initialized
 - [ ] Brownfield detection completed
 - [ ] Deep questioning completed (threads followed, not rushed)
-- [ ] PROJECT.md captures full context → **committed**
-- [ ] config.json has workflow mode, granularity, parallelization → **committed**
-- [ ] Research completed (if selected) — 4 parallel agents spawned → **committed**
+- [ ] PROJECT.md captures full context -> **committed**
+- [ ] strategy-spec.md captures strategy type, instruments, indicators, entry/exit rules -> **committed**
+- [ ] risk-parameters.md captures position sizing, max loss, brackets, kill switch -> **committed**
+- [ ] Risk parameters captured in Step 3 (questioning), not deferred to Step 7
+- [ ] config.json has workflow mode, granularity, parallelization -> **committed**
+- [ ] Research completed (if selected) -- 4 parallel agents spawned -> **committed**
 - [ ] Requirements gathered (from research or conversation)
+- [ ] Requirements include SAF-* and RSK-* categories as non-optional
 - [ ] User scoped each category (v1/v2/out of scope)
-- [ ] REQUIREMENTS.md created with REQ-IDs → **committed**
+- [ ] REQUIREMENTS.md created with REQ-IDs (API-/STR-/RSK-/RTD-/SAF-/BOT-) -> **committed**
 - [ ] tsx-roadmapper spawned with context
 - [ ] Roadmap files written immediately (not draft)
 - [ ] User feedback incorporated (if any)
