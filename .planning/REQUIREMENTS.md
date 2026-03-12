@@ -57,9 +57,9 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 - [x] **AGT-03**: `tsx-researcher` — Research trading patterns, API capabilities, library options
 - [x] **AGT-04**: `tsx-verifier` — Verify trading bot implementations against requirements
 - [ ] **AGT-05**: `tsx-debugger` — Debug trading-specific issues (API errors, WebSocket drops, order failures)
-- [ ] **AGT-06**: `tsx-codebase-mapper` — Analyze existing trading codebases
-- [ ] **AGT-07**: `tsx-plan-checker` — Validate plans achieve trading phase goals
-- [ ] **AGT-08**: `tsx-roadmapper` — Create roadmaps from trading requirements
+- [x] **AGT-06**: `tsx-codebase-mapper` — Analyze existing trading codebases
+- [x] **AGT-07**: `tsx-plan-checker` — Validate plans achieve trading phase goals
+- [x] **AGT-08**: `tsx-roadmapper` — Create roadmaps from trading requirements
 - [x] **AGT-09**: `tsx-phase-researcher` — Research how to implement a trading phase
 - [x] **AGT-10**: `tsx-research-synthesizer` — Synthesize trading domain research
 - [x] **AGT-11**: `tsx-integration-checker` — Verify cross-phase integration for trading systems
@@ -165,9 +165,9 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 | AGT-03 | Phase 3 | Complete |
 | AGT-04 | Phase 3 | Complete |
 | AGT-05 | Phase 3 | Pending |
-| AGT-06 | Phase 3 | Pending |
-| AGT-07 | Phase 3 | Pending |
-| AGT-08 | Phase 3 | Pending |
+| AGT-06 | Phase 3 | Complete |
+| AGT-07 | Phase 3 | Complete |
+| AGT-08 | Phase 3 | Complete |
 | AGT-09 | Phase 3 | Complete |
 | AGT-10 | Phase 3 | Complete |
 | AGT-11 | Phase 3 | Complete |
