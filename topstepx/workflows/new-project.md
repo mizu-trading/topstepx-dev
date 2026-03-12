@@ -22,7 +22,7 @@ Check if `--auto` flag is present in $ARGUMENTS.
   - Roadmap approval: Auto-approve
 
 **Document requirement:**
-Auto mode requires an idea document — either:
+Auto mode requires an idea document -- either:
 - File reference: `/tsx:new-project --auto @prd.md`
 - Pasted/written text in the prompt
 
@@ -37,6 +37,23 @@ Usage:
 
 The document should describe what you want to build.
 ```
+
+**Trading-specific auto-mode extraction:**
+
+When processing the provided document in auto mode, parse for trading-specific fields:
+- **Instrument mentions:** ES, NQ, CL, GC, MES, MNQ, and other futures contract symbols
+- **Strategy indicators:** EMA, RSI, MACD, Bollinger Bands, ATR, VWAP, and other technical indicators with parameters
+- **Risk parameters:** Stop loss values, position sizes, daily loss limits, bracket order configuration
+- **Account type:** Evaluation, funded, simulation, account size mentions
+- **PineScript code blocks:** If present, flag for repainting audit and apply bar-close execution defaults
+
+If the document contains trading concepts, generate `strategy-spec.md` and `risk-parameters.md` from extracted context in Step 4. Use conservative defaults from `safety-patterns.md` for any unspecified risk parameters.
+
+If PineScript code is detected in the document:
+- Set `Origin: PineScript conversion` in strategy-spec.md
+- Set `Repainting Status: Needs audit` in strategy-spec.md
+- Apply bar-close execution model as default
+- Note any `request.security()`, `barstate.isrealtime`, or fluid value patterns for audit
 </auto_mode>
 
 <process>
@@ -217,51 +234,113 @@ Proceed to Step 4 (skip Steps 3 and 5).
 
 Ask inline (freeform, NOT AskUserQuestion):
 
-"What do you want to build?"
+"Tell me about your trading idea -- what do you want to trade and how?"
 
-Wait for their response. This gives you the context needed to ask intelligent follow-up questions.
+Wait for their response. This gives you the context needed to ask intelligent follow-up questions using trading-specific probes from `questioning.md`.
 
-**Follow the thread:**
+**Follow the thread with trading awareness:**
 
-Based on what they said, ask follow-up questions that dig into their response. Use AskUserQuestion with options that probe what they mentioned — interpretations, clarifications, concrete examples.
+Based on what they said, probe the 5 trading domains from `questioning.md`:
 
-Keep following threads. Each answer opens new threads to explore. Ask about:
-- What excited them
-- What problem sparked this
-- What they mean by vague terms
-- What it would actually look like
-- What's already decided
+1. **Instrument and Market** -- What they're trading, which contract (ES, NQ, CL, MES, etc.), market hours (RTH vs ETH), data timeframes
+2. **Strategy Type** -- The logic: trend-following, mean-reversion, breakout, scalping. Signal source: indicators, price action, volume. Specific entry/exit rules.
+3. **Execution Model** -- Bar-close vs tick-based execution, order types (market, limit, stop), bracket order configuration
+4. **Risk Tolerance** -- Position sizing, max loss per trade, max daily loss, max contracts, kill switch conditions, bracket orders (NON-OPTIONAL -- these must be captured here, not deferred)
+5. **Account and Environment** -- TopStepX evaluation/funded/simulation, API access ($29/month add-on), Node.js/Python preference, deployment target
 
-Consult `questioning.md` for techniques:
-- Challenge vagueness
-- Make abstract concrete
-- Surface assumptions
-- Find edges
-- Reveal motivation
+Use AskUserQuestion with options that probe what they mentioned -- interpretations, clarifications, concrete examples. Keep following threads. Each answer opens new threads to explore.
+
+Consult `questioning.md` for specific AskUserQuestion examples, anti-patterns, and the freeform rule.
+
+**Risk parameter capture (NON-OPTIONAL):**
+
+Risk parameters (position sizing, max loss, brackets, kill switch) must be captured during this step. If the user doesn't specify, state the conservative defaults from `safety-patterns.md` and confirm:
+- Max position size: 1 contract
+- Max daily loss: account's daily loss limit minus 20% buffer
+- Bracket orders: always required (stop-loss + take-profit on every entry)
+- Kill switch: max daily loss hit, N consecutive losers, WebSocket disconnection > 30s
+
+**PineScript detection:**
+
+If the user mentions PineScript, TradingView, or pastes Pine code:
+- Capture the strategy context (what the script does, indicators used)
+- Note it for repainting audit in the strategy specification
+- Optionally suggest `/tsx:adapt-pinescript` for full conversion workflow (Phase 7)
+- If they want to continue here, capture the PineScript origin and flag `Repainting Status: Needs audit`
 
 **Check context (background, not out loud):**
 
-As you go, mentally check the context checklist from `questioning.md`. If gaps remain, weave questions naturally. Don't suddenly switch to checklist mode.
+As you go, mentally check the trading context checklist from `questioning.md`:
+- [ ] What instrument(s) and timeframe(s)
+- [ ] What strategy type and signal source (concrete enough to implement)
+- [ ] Entry/exit rules (specific indicators, thresholds, conditions)
+- [ ] Risk parameters (position size, max loss, brackets, kill switch)
+- [ ] Account type and runtime environment
+- [ ] If PineScript conversion: repainting awareness, signal confirmation preference
+
+If gaps remain, weave questions naturally. Don't suddenly switch to checklist mode.
 
 **Decision gate:**
 
-When you could write a clear PROJECT.md, use AskUserQuestion:
+When you could write a clear PROJECT.md with implementable strategy specs, use AskUserQuestion:
 
 - header: "Ready?"
-- question: "I think I understand what you're after. Ready to create PROJECT.md?"
+- question: "I think I have enough to spec out your trading bot. Ready to create PROJECT.md?"
 - options:
-  - "Create PROJECT.md" — Let's move forward
-  - "Keep exploring" — I want to share more / ask me more
+  - "Create PROJECT.md" -- Let's move forward
+  - "Keep exploring" -- I want to share more / ask me more
 
-If "Keep exploring" — ask what they want to add, or identify gaps and probe naturally.
+If "Keep exploring" -- ask what they want to add, or identify gaps and probe naturally.
 
 Loop until "Create PROJECT.md" selected.
 
-## 4. Write PROJECT.md
+## 4. Write PROJECT.md + Trading Artifacts
 
-**If auto mode:** Synthesize from provided document. No "Ready?" gate was shown — proceed directly to commit.
+**If auto mode:** Synthesize from provided document. No "Ready?" gate was shown -- proceed directly to artifact generation and commit.
 
 Synthesize all context into `.planning/PROJECT.md` using the template from `templates/project.md`.
+
+**Trading-specific PROJECT.md content:**
+
+For trading projects, the PROJECT.md should include trading-specific content in each section:
+
+```markdown
+## What This Is
+[Trading bot description from questioning -- instrument, strategy type, execution model]
+
+## Core Value
+[The one thing -- e.g., "Bot correctly identifies and executes EMA crossover signals on ES futures with proper risk management"]
+
+## Requirements
+### Validated
+(None yet -- ship to validate)
+
+### Active
+- [ ] Authenticate with TopStepX API and maintain JWT session
+- [ ] Stream real-time quote data for [instrument] via SignalR
+- [ ] Calculate [indicators] on [timeframe] bars
+- [ ] Enter [long/short/both] positions on [signal conditions]
+- [ ] Exit positions via [stop-loss/take-profit/signal reversal/time-based]
+- [ ] Enforce risk guardrails (position limits, daily loss, kill switch)
+- [ ] Log all trades and account state changes
+
+### Out of Scope
+- Backtesting -- TopStepX API is live-only
+- Multi-broker support -- TopStepX specific
+- UI/dashboard -- CLI bot only (unless user specifies otherwise)
+
+## Context
+**Strategy:** [Strategy name and type from strategy-spec.md]
+**Instrument:** [Contract details]
+**Account:** [TopStepX account type and constraints]
+**Runtime:** [Node.js/Python, deployment target]
+
+## Constraints
+- **API**: TopStepX REST + SignalR WebSocket only
+- **Safety**: All SAF-01 through SAF-05 patterns mandatory
+- **Execution**: Bar-close default unless user opts for tick-based
+- **Risk**: [Captured risk parameters from questioning]
+```
 
 **For greenfield projects:**
 
@@ -272,7 +351,7 @@ Initialize requirements as hypotheses:
 
 ### Validated
 
-(None yet — ship to validate)
+(None yet -- ship to validate)
 
 ### Active
 
@@ -282,8 +361,8 @@ Initialize requirements as hypotheses:
 
 ### Out of Scope
 
-- [Exclusion 1] — [why]
-- [Exclusion 2] — [why]
+- [Exclusion 1] -- [why]
+- [Exclusion 2] -- [why]
 ```
 
 All Active requirements are hypotheses until shipped and validated.
@@ -301,9 +380,9 @@ Infer Validated requirements from existing code:
 
 ### Validated
 
-- ✓ [Existing capability 1] — existing
-- ✓ [Existing capability 2] — existing
-- ✓ [Existing capability 3] — existing
+- [Existing capability 1] -- existing
+- [Existing capability 2] -- existing
+- [Existing capability 3] -- existing
 
 ### Active
 
@@ -312,7 +391,7 @@ Infer Validated requirements from existing code:
 
 ### Out of Scope
 
-- [Exclusion 1] — [why]
+- [Exclusion 1] -- [why]
 ```
 
 **Key Decisions:**
@@ -324,7 +403,7 @@ Initialize with any decisions made during questioning:
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| [Choice from questioning] | [Why] | — Pending |
+| [Choice from questioning] | [Why] | -- Pending |
 ```
 
 **Last updated footer:**
@@ -336,11 +415,36 @@ Initialize with any decisions made during questioning:
 
 Do not compress. Capture everything gathered.
 
-**Commit PROJECT.md:**
+**Generate trading artifacts alongside PROJECT.md:**
+
+After writing PROJECT.md, generate TWO additional trading-specific artifacts from the questioning answers:
+
+1. **`.planning/strategy-spec.md`** -- Using the `templates/strategy-spec.md` template, populated with:
+   - Strategy name, type, instrument, timeframe from questioning
+   - Indicators with exact parameters (period, thresholds)
+   - Entry/exit conditions as concrete, implementable rules
+   - Risk parameters from questioning (or conservative defaults)
+   - Source information (original idea, PineScript conversion, etc.)
+
+2. **`.planning/risk-parameters.md`** -- Using the `templates/risk-parameters.md` template, populated with:
+   - Account context (TopStepX account type, balance, platform limits)
+   - Position sizing rules (max contracts, sizing method)
+   - Loss limits (per-trade, daily, drawdown) with actions on breach
+   - Order defaults (bracket configuration, order types)
+   - Safety overrides and kill switch conditions
+
+**Risk parameter defaults:** For any risk parameters the user didn't specify during questioning, apply conservative defaults from `safety-patterns.md`:
+- Max position size: 1 contract
+- Max daily loss: platform daily loss limit minus 20% buffer
+- Bracket orders: always required (SAF-01)
+- Default stop-loss: 20 ticks, take-profit: 40 ticks (2:1 R:R)
+- Kill switch: max daily loss hit, 3 consecutive losers, WebSocket disconnection > 30s
+
+**Commit all three artifacts:**
 
 ```bash
 mkdir -p .planning
-node "$HOME/.claude/topstepx/bin/tsx-tools.cjs" commit "docs: initialize project" --files .planning/PROJECT.md
+node "$HOME/.claude/topstepx/bin/tsx-tools.cjs" commit "docs: initialize project" --files .planning/PROJECT.md .planning/strategy-spec.md .planning/risk-parameters.md
 ```
 
 ## 5. Workflow Preferences
