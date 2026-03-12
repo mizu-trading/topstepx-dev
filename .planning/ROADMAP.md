@@ -85,11 +85,13 @@ Plans:
   3. execute-phase workflow runs wave-based parallel execution with atomic commits per task, spawning tsx-executor with trading awareness
   4. verify-work workflow validates built features through conversational UAT by spawning tsx-verifier with trading-specific validation checks
   5. All remaining GSD workflows (pause, resume, progress, quick, debug, map-codebase, health, etc.) are adapted with tsx-* agent references and trading state awareness
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 04-01: TBD
-- [ ] 04-02: TBD
+- [ ] 04-01-PLAN.md — Adapt discuss-phase + plan-phase workflows with trading domain injection (WKF-02, WKF-03)
+- [ ] 04-02-PLAN.md — Adapt execute-phase + execute-plan + transition workflows (WKF-04)
+- [ ] 04-03-PLAN.md — Adapt verify-work + verify-phase + diagnose-issues workflows (WKF-05)
+- [ ] 04-04-PLAN.md — Adapt 26 remaining utility workflows with naming-only changes (WKF-06)
 
 ### Phase 5: From-Scratch Workflow
 **Goal**: A user can start from zero and be guided through a complete trading bot project creation: requirements gathering, research, roadmap, and phase execution
@@ -190,7 +192,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5/6/7 (parallel-eligible) -
 | 1. References and Domain Knowledge | 3/3 | Complete   | 2026-03-11 |
 | 2. Templates and State Tooling | 3/3 | Complete   | 2026-03-11 |
 | 3. Trading-Aware Agents | 4/4 | Complete   | 2026-03-12 |
-| 4. Core Execution Workflows | 0/TBD | Not started | - |
+| 4. Core Execution Workflows | 0/4 | Planned | - |
 | 5. From-Scratch Workflow | 0/TBD | Not started | - |
 | 6. Language Adaptation Workflow | 0/TBD | Not started | - |
 | 7. PineScript Conversion Workflow | 0/TBD | Not started | - |
