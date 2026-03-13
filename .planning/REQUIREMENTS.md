@@ -30,19 +30,19 @@ Every GSD command gets a TSX equivalent (`/tsx:*` prefix).
 - [x] **CMD-17**: `/tsx:plan-milestone-gaps` — Create phases to close audit gaps
 
 **Utilities:**
-- [ ] **CMD-18**: `/tsx:map-codebase` — Analyze existing trading codebase
-- [ ] **CMD-19**: `/tsx:quick` — Execute ad-hoc tasks with GSD guarantees
+- [x] **CMD-18**: `/tsx:map-codebase` — Analyze existing trading codebase
+- [x] **CMD-19**: `/tsx:quick` — Execute ad-hoc tasks with GSD guarantees
 - [ ] **CMD-20**: `/tsx:debug` — Systematic debugging for trading integrations
-- [ ] **CMD-21**: `/tsx:add-todo` — Capture idea for later
-- [ ] **CMD-22**: `/tsx:check-todos` — List pending todos
-- [ ] **CMD-23**: `/tsx:settings` — Configure workflow toggles
-- [ ] **CMD-24**: `/tsx:set-profile` — Switch model profile
-- [ ] **CMD-25**: `/tsx:update` — Update TSX to latest version
+- [x] **CMD-21**: `/tsx:add-todo` — Capture idea for later
+- [x] **CMD-22**: `/tsx:check-todos` — List pending todos
+- [x] **CMD-23**: `/tsx:settings` — Configure workflow toggles
+- [x] **CMD-24**: `/tsx:set-profile` — Switch model profile
+- [x] **CMD-25**: `/tsx:update` — Update TSX to latest version
 - [ ] **CMD-26**: `/tsx:research-phase` — Deep domain research for a phase
-- [ ] **CMD-27**: `/tsx:validate-phase` — Retroactive validation
-- [ ] **CMD-28**: `/tsx:health` — Check .planning/ integrity
-- [ ] **CMD-29**: `/tsx:cleanup` — Clean up temporary files
-- [ ] **CMD-30**: `/tsx:add-tests` — Add tests to existing phase
+- [x] **CMD-27**: `/tsx:validate-phase` — Retroactive validation
+- [x] **CMD-28**: `/tsx:health` — Check .planning/ integrity
+- [x] **CMD-29**: `/tsx:cleanup` — Clean up temporary files
+- [x] **CMD-30**: `/tsx:add-tests` — Add tests to existing phase
 
 **TSX-Specific:**
 - [x] **CMD-31**: `/tsx:adapt-language` — Convert TopStepX code between languages
@@ -197,19 +197,19 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 | CMD-15 | Phase 9 | Complete |
 | CMD-16 | Phase 9 | Complete |
 | CMD-17 | Phase 9 | Complete |
-| CMD-18 | Phase 9 | Pending |
-| CMD-19 | Phase 9 | Pending |
+| CMD-18 | Phase 9 | Complete |
+| CMD-19 | Phase 9 | Complete |
 | CMD-20 | Phase 9 | Pending |
-| CMD-21 | Phase 9 | Pending |
-| CMD-22 | Phase 9 | Pending |
-| CMD-23 | Phase 9 | Pending |
-| CMD-24 | Phase 9 | Pending |
-| CMD-25 | Phase 9 | Pending |
+| CMD-21 | Phase 9 | Complete |
+| CMD-22 | Phase 9 | Complete |
+| CMD-23 | Phase 9 | Complete |
+| CMD-24 | Phase 9 | Complete |
+| CMD-25 | Phase 9 | Complete |
 | CMD-26 | Phase 9 | Pending |
-| CMD-27 | Phase 9 | Pending |
-| CMD-28 | Phase 9 | Pending |
-| CMD-29 | Phase 9 | Pending |
-| CMD-30 | Phase 9 | Pending |
+| CMD-27 | Phase 9 | Complete |
+| CMD-28 | Phase 9 | Complete |
+| CMD-29 | Phase 9 | Complete |
+| CMD-30 | Phase 9 | Complete |
 | CMD-31 | Phase 9 | Complete |
 | CMD-32 | Phase 9 | Complete |
 | INF-02 | Phase 10 | Pending |
