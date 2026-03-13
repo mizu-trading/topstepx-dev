@@ -1,4 +1,4 @@
-# Design: topstepx-skill npm package (multi-platform)
+# Design: topstepx-dev npm package (multi-platform)
 
 **Date:** 2026-03-10
 **Status:** Approved
@@ -10,9 +10,9 @@ Transform the Claude Code-only plugin into a universal npm-installable skill pac
 ## Package Structure
 
 ```
-topstepx-skill/
+topstepx-dev/
 ├── bin/
-│   └── install.js              # CLI entry point (npx topstepx-skill)
+│   └── install.js              # CLI entry point (npx topstepx-dev)
 ├── skills/
 │   └── topstepx-api/
 │       ├── SKILL.md            # Shared skill definition (agentskills.io spec)
@@ -46,9 +46,9 @@ topstepx-skill/
 ### CLI Flags
 
 ```bash
-npx topstepx-skill                    # Interactive
-npx topstepx-skill --claude --global  # Non-interactive
-npx topstepx-skill --all --local      # All platforms, local project
+npx topstepx-dev                    # Interactive
+npx topstepx-dev --claude --global  # Non-interactive
+npx topstepx-dev --all --local      # All platforms, local project
 ```
 
 ## Changes from Current Repo

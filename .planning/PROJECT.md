@@ -42,7 +42,7 @@ AI agents can take any trading idea — whether from scratch, existing code, or 
 
 ## Context
 
-**Prior work:** The repo already has a working npm-published skill (`topstepx-skill@1.0.0`) with a multi-platform installer and complete API reference docs split into `rest-api.md`, `realtime.md`, and `enums.md`. The codebase has been mapped (`.planning/codebase/`).
+**Prior work:** The repo already has a working npm-published skill (`topstepx-dev@1.0.0`) with a multi-platform installer and complete API reference docs split into `rest-api.md`, `realtime.md`, and `enums.md`. The codebase has been mapped (`.planning/codebase/`).
 
 **GSD codebase:** Cloned from https://github.com/gsd-build/get-shit-done. GSD provides the full framework pattern: commands (YAML frontmatter + workflow references), agents (role + execution flow), workflows (step-by-step orchestration), templates (output standards), references (domain knowledge), and a Node.js installer. TSX will adapt this code directly.
 
@@ -57,7 +57,7 @@ AI agents can take any trading idea — whether from scratch, existing code, or 
 ## Constraints
 
 - **Tech stack**: JavaScript (CommonJS), Node.js >= 18, zero runtime dependencies — matching existing pattern
-- **Distribution**: npm package, `npx topstepx-skill` entry point preserved
+- **Distribution**: npm package, `npx topstepx-dev` entry point preserved
 - **Compatibility**: Must coexist with GSD (`/tsx:*` alongside `/gsd:*`, no conflicts)
 - **Platform support**: Claude Code, OpenCode, Codex CLI, Gemini CLI — same 4 platforms
 - **Content only**: Static files (Markdown + JSON + JS installer) — no runtime services, no API keys bundled

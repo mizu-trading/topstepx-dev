@@ -558,7 +558,7 @@ function ask(rl, question) {
 
 function printBanner() {
   console.log('');
-  console.log('  topstepx-skill v' + VERSION);
+  console.log('  topstepx-dev v' + VERSION);
   console.log('  TSX Framework installer for AI coding assistants');
   console.log('');
 }
@@ -580,7 +580,7 @@ function parseArgs(argv) {
     else if (arg === '--uninstall') result.uninstall = true;
     else if (arg === '--dry-run') result.dryRun = true;
     else if (arg === '--help' || arg === '-h') {
-      console.log('  Usage: npx topstepx-skill [options]');
+      console.log('  Usage: npx topstepx-dev [options]');
       console.log('');
       console.log('  Platform flags:');
       console.log('    --claude      Install for Claude Code');
@@ -598,10 +598,10 @@ function parseArgs(argv) {
       console.log('    --dry-run     Preview install/uninstall without modifying files');
       console.log('');
       console.log('  Examples:');
-      console.log('    npx topstepx-skill                    # Interactive');
-      console.log('    npx topstepx-skill --claude --global  # Claude Code, global');
-      console.log('    npx topstepx-skill --all --local      # All platforms, local');
-      console.log('    npx topstepx-skill --uninstall --claude --global  # Uninstall');
+      console.log('    npx topstepx-dev                    # Interactive');
+      console.log('    npx topstepx-dev --claude --global  # Claude Code, global');
+      console.log('    npx topstepx-dev --all --local      # All platforms, local');
+      console.log('    npx topstepx-dev --uninstall --claude --global  # Uninstall');
       console.log('');
       process.exit(0);
     }

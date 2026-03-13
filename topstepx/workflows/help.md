@@ -18,7 +18,7 @@ Display the complete TSX command reference. Output ONLY the reference content. D
 TSX evolves fast. Update periodically:
 
 ```bash
-npx topstepx-skill@latest
+npx topstepx-dev@latest
 ```
 
 ## Core Workflow
@@ -334,7 +334,7 @@ Update TSX to latest version with changelog preview.
 - Displays changelog entries for versions you've missed
 - Highlights breaking changes
 - Confirms before running install
-- Better than raw `npx topstepx-skill`
+- Better than raw `npx topstepx-dev`
 
 Usage: `/tsx:update`
 

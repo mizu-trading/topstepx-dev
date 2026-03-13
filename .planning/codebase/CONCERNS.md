@@ -11,7 +11,7 @@
 - Fix approach: Add a test framework (e.g., Jest or Node's built-in `node:test`). Write unit tests for `parseArgs()`, `copyDirSync()`, and `install()`. Use a temp directory for file system assertions. Mock `readline` for interactive prompt tests.
 
 **No input validation in installer:**
-- Issue: `parseArgs()` silently ignores unrecognized CLI flags. A user running `npx topstepx-skill --cladue --global` (typo) gets interactive mode instead of an error.
+- Issue: `parseArgs()` silently ignores unrecognized CLI flags. A user running `npx topstepx-dev --cladue --global` (typo) gets interactive mode instead of an error.
 - Files: `bin/install.js`, lines 66-104
 - Impact: Confusing UX when flags are misspelled. Users may think the tool is broken.
 - Fix approach: Track unknown args in `parseArgs()` and print a warning like `Unknown flag: --cladue. Did you mean --claude?` before falling through to interactive mode.
@@ -43,7 +43,7 @@
 - Workaround: Users can Ctrl+C to exit. In practice, stack overflow requires thousands of invalid inputs, so this is low severity.
 
 **`--all` flag can be overridden by subsequent platform flags:**
-- Symptoms: `npx topstepx-skill --all --claude` results in `['claude', 'opencode', 'codex', 'gemini', 'claude']` before deduplication. This is handled by the `new Set()` dedup on line 102, so behavior is correct but the parsing logic is fragile.
+- Symptoms: `npx topstepx-dev --all --claude` results in `['claude', 'opencode', 'codex', 'gemini', 'claude']` before deduplication. This is handled by the `new Set()` dedup on line 102, so behavior is correct but the parsing logic is fragile.
 - Files: `bin/install.js`, lines 70-76
 - Trigger: Combine `--all` with individual platform flags.
 - Workaround: Deduplication handles it, but the arg parser should short-circuit when `--all` is present.
@@ -111,7 +111,7 @@ Not applicable. This is a static content installer, not a runtime service.
 - Blocks: Users may run an outdated cached `npx` version and not realize their skill files are stale.
 
 **No `--version` flag:**
-- Problem: Running `npx topstepx-skill --version` does not print the version. The version is only shown in the banner during interactive mode.
+- Problem: Running `npx topstepx-dev --version` does not print the version. The version is only shown in the banner during interactive mode.
 - Blocks: Scriptable version checks.
 
 ## Test Coverage Gaps

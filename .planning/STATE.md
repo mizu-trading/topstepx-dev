@@ -4,7 +4,7 @@ milestone: v1.0
 milestone_name: milestone
 status: in-progress
 stopped_at: Completed 10-02-PLAN.md
-last_updated: "2026-03-13T03:59:43.030Z"
+last_updated: "2026-03-13T04:04:28.161Z"
 last_activity: "2026-03-13 -- Completed 10-01: Full framework installer (1 file, 879 lines)"
 progress:
   total_phases: 10
@@ -173,7 +173,7 @@ Recent decisions affecting current work:
 - [04-04]: Naming-only adaptation of 7,719 lines across 26 utility workflows -- zero refactoring of production-proven GSD logic
 - [04-04]: help.md rebranded with TSX (TopStepX) framework description for trading bots
 - [04-04]: new-project.md naming-only -- deep trading injection deferred to Phase 5 (WKF-01)
-- [04-04]: update.md package name changed to topstepx-skill@latest
+- [04-04]: update.md package name changed to topstepx-dev@latest
 - [04-04]: settings.md config paths use ~/.tsx/ instead of ~/.gsd/
 - [05-01]: Trading questioning replaces generic opener -- "Tell me about your trading idea" instead of "What do you want to build"
 - [05-01]: Risk parameters captured during Step 3 questioning, generated as artifact in Step 4 -- never deferred to Step 7

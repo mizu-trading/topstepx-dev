@@ -13,7 +13,7 @@ requires:
 provides:
   - "26 utility/supporting workflow files in topstepx/workflows/"
   - "Complete /tsx: command reference in help.md"
-  - "topstepx-skill@latest package name in update.md"
+  - "topstepx-dev@latest package name in update.md"
   - "~/.tsx/ config paths in settings.md"
 affects: [05-new-project-trading, 06-debug-workflow, 07-verify-work-workflow]
 
@@ -58,7 +58,7 @@ key-decisions:
   - "Naming-only adaptation of 7,719 lines across 26 files -- zero refactoring of production-proven GSD workflow logic"
   - "help.md rebranded: TSX (TopStepX) creates hierarchical project plans optimized for solo agentic development of TopStepX trading bots"
   - "new-project.md kept naming-only -- deep trading injection deferred to Phase 5 (WKF-01)"
-  - "update.md package name changed to topstepx-skill@latest"
+  - "update.md package name changed to topstepx-dev@latest"
   - "settings.md config paths use ~/.tsx/ instead of ~/.gsd/"
 
 patterns-established:
@@ -111,7 +111,7 @@ Each task was committed atomically:
 - `topstepx/workflows/resume-project.md` - Session resumption with context restoration (307 lines)
 - `topstepx/workflows/discovery-phase.md` - Multi-depth discovery workflow (289 lines)
 - `topstepx/workflows/plan-milestone-gaps.md` - Gap closure phase creation (274 lines)
-- `topstepx/workflows/update.md` - Update workflow with topstepx-skill@latest (240 lines)
+- `topstepx/workflows/update.md` - Update workflow with topstepx-dev@latest (240 lines)
 - `topstepx/workflows/settings.md` - Interactive config with ~/.tsx/ paths (214 lines)
 - `topstepx/workflows/list-phase-assumptions.md` - Phase assumption surfacing (178 lines)
 - `topstepx/workflows/check-todos.md` - Todo listing and routing (177 lines)
@@ -130,7 +130,7 @@ Each task was committed atomically:
 - Naming-only adaptation preserves all GSD production-proven logic without refactoring
 - help.md description rebranded from "GSD (Get Shit Done)" to "TSX (TopStepX) creates hierarchical project plans optimized for solo agentic development of TopStepX trading bots"
 - new-project.md intentionally kept at naming-only -- deep trading questioning deferred to Phase 5 (WKF-01)
-- update.md npm package name changed to topstepx-skill@latest
+- update.md npm package name changed to topstepx-dev@latest
 - settings.md global defaults path changed to ~/.tsx/defaults.json
 
 ## Deviations from Plan

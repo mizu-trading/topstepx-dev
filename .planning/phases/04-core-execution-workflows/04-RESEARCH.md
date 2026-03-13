@@ -430,7 +430,7 @@ Task(
 | resume-project.md | 307 | Naming only | |
 | discovery-phase.md | 289 | Naming only | |
 | plan-milestone-gaps.md | 274 | Naming only | |
-| update.md | 240 | Naming only | Must update npm package name from get-shit-done to topstepx-skill |
+| update.md | 240 | Naming only | Must update npm package name from get-shit-done to topstepx-dev |
 | settings.md | 214 | Naming only | ~/.gsd/ -> ~/.tsx/, brand changes |
 | list-phase-assumptions.md | 178 | Naming only | |
 | check-todos.md | 177 | Naming only | |
@@ -463,9 +463,9 @@ Task(
 ## Open Questions
 
 1. **update.md npm package name**
-   - What we know: GSD's update.md references `get-shit-done-cc@latest`. TSX should reference `topstepx-skill@latest`.
-   - What's unclear: Whether the npm package name should change from `topstepx-skill` to something else
-   - Recommendation: Use `topstepx-skill@latest` as that's the current package name in package.json
+   - What we know: GSD's update.md references `get-shit-done-cc@latest`. TSX should reference `topstepx-dev@latest`.
+   - What's unclear: Whether the npm package name should change from `topstepx-dev` to something else
+   - Recommendation: Use `topstepx-dev@latest` as that's the current package name in package.json
 
 2. **help.md TSX description**
    - What we know: GSD's help.md describes "GSD (Get Shit Done) creates hierarchical project plans optimized for solo agentic development"

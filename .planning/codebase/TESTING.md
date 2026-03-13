@@ -97,7 +97,7 @@ mock.method(fs, 'copyFileSync', () => {});
 
 **Integration Tests:** Not present. Would cover full `main()` flow with mocked filesystem and stdin.
 
-**E2E Tests:** Not present. Would run `npx topstepx-skill --claude --local` and verify files are copied to expected paths.
+**E2E Tests:** Not present. Would run `npx topstepx-dev --claude --local` and verify files are copied to expected paths.
 
 ## Test Coverage Gaps
 

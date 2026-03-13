@@ -1,9 +1,9 @@
 {
-  "name": "topstepx-skill",
+  "name": "topstepx-dev",
   "version": "1.0.0",
   "description": "TSX -- AI framework for building TopStepX trading bots. Extends GSD (Get Shit Done) with trading domain workflows, agents, and templates.",
   "bin": {
-    "topstepx-skill": "bin/install.js"
+    "topstepx-dev": "bin/install.js"
   },
   "files": [
     "bin/",
@@ -40,11 +40,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mizu-trading/topstepx-skill.git"
+    "url": "git+https://github.com/mizu-trading/topstepx-dev.git"
   },
-  "homepage": "https://github.com/mizu-trading/topstepx-skill#readme",
+  "homepage": "https://github.com/mizu-trading/topstepx-dev#readme",
   "bugs": {
-    "url": "https://github.com/mizu-trading/topstepx-skill/issues"
+    "url": "https://github.com/mizu-trading/topstepx-dev/issues"
   },
   "engines": {
     "node": ">=16.7.0"

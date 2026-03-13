@@ -123,7 +123,7 @@ Template for `.planning/codebase/STRUCTURE.md` - captures physical file organiza
 ## Directory Layout
 
 ```
-topstepx-skill/
+topstepx-dev/
 ├── bin/                # Executable entry points
 ├── commands/           # Slash command definitions
 │   └── tsx/           # TSX-specific commands

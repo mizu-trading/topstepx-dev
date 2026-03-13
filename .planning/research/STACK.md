@@ -22,7 +22,7 @@ The framework is pure Markdown + a thin JS installer. This is correct and should
 
 | Decision | Rationale |
 |----------|-----------|
-| Do NOT add runtime dependencies to package.json | Zero-dep installer is a feature. Users run `npx topstepx-skill` and it copies files. No node_modules, no build step. |
+| Do NOT add runtime dependencies to package.json | Zero-dep installer is a feature. Users run `npx topstepx-dev` and it copies files. No node_modules, no build step. |
 | Do NOT convert to TypeScript | The installer is 225 lines of straightforward CommonJS. TypeScript adds a build step for no benefit here. |
 | Do NOT add a bundler | There is nothing to bundle. The skill files are Markdown, the installer is a single JS file. |
 | Do NOT use a framework for the installer | readline + fs + path is all that is needed. Adding inquirer/commander/yargs would break the zero-dep principle. |

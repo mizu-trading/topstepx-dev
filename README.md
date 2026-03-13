@@ -18,10 +18,10 @@ Key capabilities:
 ## Installation
 
 ```bash
-npx topstepx-skill                              # Interactive
-npx topstepx-skill --claude --global             # Claude Code, global
-npx topstepx-skill --all --global                # All platforms
-npx topstepx-skill --uninstall --claude --global  # Uninstall
+npx topstepx-dev                              # Interactive
+npx topstepx-dev --claude --global             # Claude Code, global
+npx topstepx-dev --all --global                # All platforms
+npx topstepx-dev --uninstall --claude --global  # Uninstall
 ```
 
 The installer will ask which platform(s) and whether to install globally or locally.
@@ -42,7 +42,7 @@ The installer will ask which platform(s) and whether to install globally or loca
 
 ## Quick Start
 
-1. Install: `npx topstepx-skill --claude --global`
+1. Install: `npx topstepx-dev --claude --global`
 2. Open a project in Claude Code
 3. Run: `/tsx:new-project`
 4. Follow the guided conversation to define your trading bot

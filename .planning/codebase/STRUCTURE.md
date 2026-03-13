@@ -5,9 +5,9 @@
 ## Directory Layout
 
 ```
-topstepx-skill/
+topstepx-dev/
 ├── bin/                        # CLI installer scripts
-│   └── install.js              # Main entry point (npx topstepx-skill)
+│   └── install.js              # Main entry point (npx topstepx-dev)
 ├── skills/                     # Skill content (copied to target platforms)
 │   └── topstepx-api/           # The TopStepX API skill
 │       ├── SKILL.md            # Core skill definition (auto-loaded by AI)

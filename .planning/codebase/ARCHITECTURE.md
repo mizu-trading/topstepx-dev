@@ -19,7 +19,7 @@
 - Location: `bin/install.js`
 - Contains: Argument parsing, interactive prompts, file copy logic, platform definitions
 - Depends on: Node.js built-ins (`fs`, `path`, `readline`, `os`), `package.json` for version
-- Used by: End users via `npx topstepx-skill`
+- Used by: End users via `npx topstepx-dev`
 
 **Skill Content Layer:**
 - Purpose: Structured API documentation that AI assistants load as context
@@ -39,7 +39,7 @@
 
 **Installation Flow:**
 
-1. User runs `npx topstepx-skill` (or with flags like `--claude --global`)
+1. User runs `npx topstepx-dev` (or with flags like `--claude --global`)
 2. `bin/install.js` parses CLI args via `parseArgs()` (lines 66-104)
 3. If args incomplete, interactive prompts collect platform(s) and scope via `promptPlatform()` / `promptScope()`
 4. `install()` function resolves target directory using `PLATFORMS` map (lines 13-34)
@@ -73,7 +73,7 @@
 
 **CLI Entry Point:**
 - Location: `bin/install.js`
-- Triggers: `npx topstepx-skill` (declared in `package.json` `bin` field)
+- Triggers: `npx topstepx-dev` (declared in `package.json` `bin` field)
 - Responsibilities: Parse args, prompt if needed, copy skill files to target directories
 
 **Skill Entry Point:**

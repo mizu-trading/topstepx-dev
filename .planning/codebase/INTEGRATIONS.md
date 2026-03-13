@@ -66,7 +66,7 @@ This package itself has NO runtime integrations. It is a CLI installer that copi
 
 **Hosting:**
 - npm registry (package distribution)
-- GitHub repository: `https://github.com/mizu-trading/topstepx-skill`
+- GitHub repository: `https://github.com/mizu-trading/topstepx-dev`
 
 **CI Pipeline:**
 - None detected. No CI/CD configuration files present.

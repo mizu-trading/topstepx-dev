@@ -45,7 +45,7 @@ TEMPLATES + REFERENCES (get-shit-done/templates/, references/)
 ### Directory Structure
 
 ```
-topstepx-skill/
+topstepx-dev/
 ├── bin/
 │   └── install.js              # Adapted installer (copies all components)
 ├── commands/
@@ -360,7 +360,7 @@ Build in order of complexity:
 
 ## Key Architecture Decision: `topstepx/` vs `get-shit-done/`
 
-GSD uses `get-shit-done/` as its main content directory. TSX should use `topstepx/` (not `tsx/` -- too terse, not `topstepx-skill/` -- too long).
+GSD uses `get-shit-done/` as its main content directory. TSX should use `topstepx/` (not `tsx/` -- too terse, not `topstepx-dev/` -- too long).
 
 **Rationale:**
 - Parallel naming convention to GSD: `~/.claude/get-shit-done/` and `~/.claude/topstepx/`
@@ -417,7 +417,7 @@ TSX is a **peer framework**, not a plugin or extension of GSD. Both install to t
 - GSD `commands/gsd/new-project.md`, `execute-phase.md` (command patterns)
 - GSD `agents/gsd-executor.md`, `gsd-planner.md` (agent patterns)
 - GSD `get-shit-done/workflows/new-project.md`, `execute-phase.md` (workflow patterns)
-- Existing TSX codebase at `C:\Users\bkevi\Documents\GitHub\mizu\topstepx-skill\` (current state analysis)
+- Existing TSX codebase at `C:\Users\bkevi\Documents\GitHub\mizu\topstepx-dev\` (current state analysis)
 - `.planning/PROJECT.md` (project requirements and constraints)
 
 ---

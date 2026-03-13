@@ -52,11 +52,11 @@
 ## Package Distribution
 
 **npm Package:**
-- Name: `topstepx-skill`
+- Name: `topstepx-dev`
 - Version: 1.0.0
-- Entry: `bin/install.js` (exposed as `topstepx-skill` CLI command via `package.json` `bin` field)
+- Entry: `bin/install.js` (exposed as `topstepx-dev` CLI command via `package.json` `bin` field)
 - Published files: `bin/` and `skills/` directories (controlled by `files` field in `package.json`)
-- Invocation: `npx topstepx-skill`
+- Invocation: `npx topstepx-dev`
 
 ## Platform Requirements
 

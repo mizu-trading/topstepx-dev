@@ -25,7 +25,7 @@ re_verification: false
 | 2 | plan-phase workflow creates detailed execution plans by spawning tsx-planner and tsx-plan-checker, producing plans that reference trading templates and safety patterns | VERIFIED | plan-phase.md (572 lines) references tsx-planner, tsx-plan-checker, tsx-phase-researcher (11 matches total), explicitly cites $HOME/.claude/topstepx/templates/ and SAF-* safety pattern compliance in planner and checker prompts |
 | 3 | execute-phase workflow runs wave-based parallel execution with atomic commits per task, spawning tsx-executor with trading awareness | VERIFIED | execute-phase.md (459 lines) spawns tsx-executor (1 match with subagent_type), passes topstepx execution context paths (execute-plan.md, templates/summary.md, references/checkpoints.md, references/tdd.md), references transition workflow (9 matches) |
 | 4 | verify-work workflow validates built features through conversational UAT by spawning tsx-verifier with trading-specific validation checks | VERIFIED | verify-work.md (654 lines) spawns tsx-verifier for automated pre-check (3 references), spawns tsx-debugger for gap diagnosis (4 references), includes trading severity inference rules (order fill, safety pattern, WebSocket, bracket) and routes through diagnose-issues (2 references) |
-| 5 | All remaining GSD workflows (pause, resume, progress, quick, debug, map-codebase, health, etc.) are adapted with tsx-* agent references and trading state awareness | VERIFIED | All 26 utility workflows exist (34 total); zero GSD references remain across entire topstepx/workflows/ directory (grep count: 0); help.md contains 85 /tsx: command references; update.md contains topstepx-skill package name; settings.md uses ~/.tsx/ paths |
+| 5 | All remaining GSD workflows (pause, resume, progress, quick, debug, map-codebase, health, etc.) are adapted with tsx-* agent references and trading state awareness | VERIFIED | All 26 utility workflows exist (34 total); zero GSD references remain across entire topstepx/workflows/ directory (grep count: 0); help.md contains 85 /tsx: command references; update.md contains topstepx-dev package name; settings.md uses ~/.tsx/ paths |
 
 **Score:** 5/5 truths verified
 
@@ -67,7 +67,7 @@ re_verification: false
 | `diagnose-issues.md` | `tsx-debugger.md` | subagent_type spawning | WIRED | "tsx-debugger" matched 9 times |
 | `help.md` | all /tsx: commands | command documentation | WIRED | 85 /tsx: command references |
 | `quick.md` | `tsx-executor.md` | subagent_type spawning | WIRED | "tsx-executor" matched 3 times |
-| `update.md` | npm registry | package install command | WIRED | "topstepx-skill" matched 4 times |
+| `update.md` | npm registry | package install command | WIRED | "topstepx-dev" matched 4 times |
 
 All 13 key links: WIRED
 

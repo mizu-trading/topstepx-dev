@@ -75,14 +75,14 @@ Proceed to install step (treat as version 0.0.0 for comparison).
 Check npm for latest version:
 
 ```bash
-npm view topstepx-skill version 2>/dev/null
+npm view topstepx-dev version 2>/dev/null
 ```
 
 **If npm check fails:**
 ```
 Couldn't check for updates (offline or npm unavailable).
 
-To update manually: `npx topstepx-skill --global`
+To update manually: `npx topstepx-dev --global`
 ```
 
 Exit.
@@ -174,12 +174,12 @@ Run the update using the install type detected in step 1:
 
 **If LOCAL install:**
 ```bash
-npx -y topstepx-skill@latest --local
+npx -y topstepx-dev@latest --local
 ```
 
 **If GLOBAL install (or unknown):**
 ```bash
-npx -y topstepx-skill@latest --global
+npx -y topstepx-dev@latest --global
 ```
 
 Capture output. If install fails, show error and exit.

@@ -25,7 +25,7 @@ For the trading bots that TSX generates, the research identifies clear winners p
 
 **Core framework technologies:**
 - Markdown + YAML frontmatter: skill content and command definitions — portable across all AI coding platforms
-- Node.js CommonJS (>=16.7.0): zero-dependency installer — one `npx topstepx-skill` command, no node_modules
+- Node.js CommonJS (>=16.7.0): zero-dependency installer — one `npx topstepx-dev` command, no node_modules
 - `@microsoft/signalr@10.0.0`: WebSocket streaming in generated JS/TS bots — only correct client for ASP.NET Core SignalR
 - `trading-signals@7.4.3`: technical indicators for generated JS/TS bots — streaming API, no C compilation
 - `pysignalr`: SignalR client for generated Python bots — actively maintained async-native replacement for abandoned `signalrcore`
