@@ -17,10 +17,10 @@ Every GSD command gets a TSX equivalent (`/tsx:*` prefix).
 - [x] **CMD-08**: `/tsx:new-milestone` — Start next version cycle
 
 **Navigation:**
-- [ ] **CMD-09**: `/tsx:progress` — Show status and route to next action
-- [ ] **CMD-10**: `/tsx:resume-work` — Restore context from last session
-- [ ] **CMD-11**: `/tsx:pause-work` — Save handoff when stopping mid-phase
-- [ ] **CMD-12**: `/tsx:help` — Show all TSX commands
+- [x] **CMD-09**: `/tsx:progress` — Show status and route to next action
+- [x] **CMD-10**: `/tsx:resume-work` — Restore context from last session
+- [x] **CMD-11**: `/tsx:pause-work` — Save handoff when stopping mid-phase
+- [x] **CMD-12**: `/tsx:help` — Show all TSX commands
 
 **Phase Management:**
 - [ ] **CMD-13**: `/tsx:add-phase` — Append phase to roadmap
@@ -188,10 +188,10 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 | CMD-06 | Phase 8 | Complete |
 | CMD-07 | Phase 8 | Complete |
 | CMD-08 | Phase 8 | Complete |
-| CMD-09 | Phase 8 | Pending |
-| CMD-10 | Phase 8 | Pending |
-| CMD-11 | Phase 8 | Pending |
-| CMD-12 | Phase 8 | Pending |
+| CMD-09 | Phase 8 | Complete |
+| CMD-10 | Phase 8 | Complete |
+| CMD-11 | Phase 8 | Complete |
+| CMD-12 | Phase 8 | Complete |
 | CMD-13 | Phase 9 | Pending |
 | CMD-14 | Phase 9 | Pending |
 | CMD-15 | Phase 9 | Pending |

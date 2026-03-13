@@ -19,7 +19,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 5: From-Scratch Workflow** - Trading-specific new-project questioning and generation flow
 - [ ] **Phase 6: Language Adaptation Workflow** - Cross-language TopStepX code conversion
 - [ ] **Phase 7: PineScript Conversion Workflow** - TradingView PineScript to live TopStepX bot conversion
-- [ ] **Phase 8: Core Commands** - Primary command entry points for all main workflows
+- [x] **Phase 8: Core Commands** - Primary command entry points for all main workflows
 - [ ] **Phase 9: Extended Commands** - Phase management, utility, and TSX-specific commands
 - [ ] **Phase 10: Installer and Distribution** - Expanded installer, packaging, and documentation
 
@@ -148,8 +148,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 08-01-PLAN.md — Create 8 core workflow commands (new-project, discuss-phase, plan-phase, execute-phase, verify-work, audit-milestone, complete-milestone, new-milestone)
-- [ ] 08-02-PLAN.md — Create 4 navigation commands (progress, resume-work, pause-work, help) + validate all 12 commands
+- [x] 08-01-PLAN.md — Create 8 core workflow commands (new-project, discuss-phase, plan-phase, execute-phase, verify-work, audit-milestone, complete-milestone, new-milestone)
+- [x] 08-02-PLAN.md — Create 4 navigation commands (progress, resume-work, pause-work, help) + validate all 12 commands
 
 ### Phase 9: Extended Commands
 **Goal**: The complete TSX command set is available, covering phase management, utilities, and TSX-specific operations
