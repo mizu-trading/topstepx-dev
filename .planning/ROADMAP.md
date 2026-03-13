@@ -145,11 +145,11 @@ Plans:
   2. All 4 navigation commands exist (/tsx:progress, resume-work, pause-work, help) and correctly read/write .planning/ state
   3. Every command is a thin entry point (20-40 lines, zero logic) that delegates to its corresponding workflow
   4. Commands follow GSD's exact YAML frontmatter schema for cross-platform portability
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 08-01: TBD
-- [ ] 08-02: TBD
+- [ ] 08-01-PLAN.md — Create 8 core workflow commands (new-project, discuss-phase, plan-phase, execute-phase, verify-work, audit-milestone, complete-milestone, new-milestone)
+- [ ] 08-02-PLAN.md — Create 4 navigation commands (progress, resume-work, pause-work, help) + validate all 12 commands
 
 ### Phase 9: Extended Commands
 **Goal**: The complete TSX command set is available, covering phase management, utilities, and TSX-specific operations
@@ -196,6 +196,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5/6/7 (parallel-eligible) -
 | 5. From-Scratch Workflow | 0/1 | Planned | - |
 | 6. Language Adaptation Workflow | 0/1 | Planned | - |
 | 7. PineScript Conversion Workflow | 0/1 | Planned | - |
-| 8. Core Commands | 0/TBD | Not started | - |
+| 8. Core Commands | 0/2 | Not started | - |
 | 9. Extended Commands | 0/TBD | Not started | - |
 | 10. Installer and Distribution | 0/TBD | Not started | - |
