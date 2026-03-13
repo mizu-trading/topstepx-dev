@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-stopped_at: Completed 09-03-PLAN.md
-last_updated: "2026-03-13T03:22:50.067Z"
+stopped_at: Completed 10-01-PLAN.md
+last_updated: "2026-03-13T03:54:31.731Z"
 last_activity: "2026-03-13 -- Completed 09-02: Utility commands (11 files, 431 lines)"
 progress:
   total_phases: 10
   completed_phases: 9
-  total_plans: 22
-  completed_plans: 22
+  total_plans: 24
+  completed_plans: 23
   percent: 100
 ---
 
@@ -53,16 +53,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-12)
 
 **Core value:** AI agents can take any trading idea and produce a working, live-tradeable TopStepX integration by following TSX's guided workflows
-**Current focus:** Phase 9 -- Extended Commands (IN PROGRESS)
+**Current focus:** Phase 10 -- Installer and Distribution (IN PROGRESS)
 
 ## Current Position
 
-Phase: 9 of 10 (Extended Commands)
-Plan: 2 of 3 in current phase (2 complete)
-Status: Phase 9 in progress
-Last activity: 2026-03-13 -- Completed 09-02: Utility commands (11 files, 431 lines)
+Phase: 10 of 10 (Installer and Distribution)
+Plan: 1 of 1 in current phase (1 complete)
+Status: Phase 10 in progress
+Last activity: 2026-03-13 -- Completed 10-01: Full framework installer (1 file, 879 lines)
 
-Progress: [██████████] 95% (Overall: 21/22 plans complete)
+Progress: [██████████] 96% (Overall: 23/24 plans complete)
 
 ## Performance Metrics
 
@@ -104,6 +104,7 @@ Progress: [██████████] 95% (Overall: 21/22 plans complete)
 
 *Updated after each plan completion*
 | Phase 09-extended-commands P03 | 4min | 2 tasks | 2 files |
+| Phase 10-installer-and-distribution P01 | 6min | 2 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -184,6 +185,9 @@ Recent decisions affecting current work:
 - [09-02]: add-tests.md preserves argument-instructions frontmatter for phase number parsing examples
 - [09-02]: All utility commands use $HOME/.claude/topstepx/workflows/ canonical path prefix
 - [Phase 09-03]: Rich commands preserve exact line counts from GSD sources (168/190 lines) with systematic tsx- naming
+- [Phase 10-installer-and-distribution]: Single-file installer (879 lines) matching GSD pattern -- no lib/ modules
+- [Phase 10-installer-and-distribution]: CRLF normalization in frontmatter parser for Windows compatibility
+- [Phase 10-installer-and-distribution]: Codex agents as skill directories (SKILL.md) rather than config.toml merging for v1
 
 ### Pending Todos
 
@@ -195,6 +199,6 @@ None -- Phases 1-8 complete (19/19 plans), Phase 9 Plans 1-2 complete (21/22 pla
 
 ## Session Continuity
 
-Last session: 2026-03-13T03:22:50.065Z
-Stopped at: Completed 09-03-PLAN.md
+Last session: 2026-03-13T03:54:31.728Z
+Stopped at: Completed 10-01-PLAN.md
 Resume file: None

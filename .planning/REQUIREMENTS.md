@@ -102,10 +102,10 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 ### Infrastructure (INF)
 
 - [x] **INF-01**: `tsx-tools.cjs` — CLI utilities adapted from gsd-tools.cjs for trading state management
-- [ ] **INF-02**: Installer — Full framework install (commands, agents, workflows, templates, references)
-- [ ] **INF-03**: Installer — All 4 platforms (Claude Code, OpenCode, Codex CLI, Gemini CLI)
-- [ ] **INF-04**: Installer — GSD coexistence (tsx:* alongside gsd:* with zero conflicts)
-- [ ] **INF-05**: Installer — Uninstall support (clean removal from target platform)
+- [x] **INF-02**: Installer — Full framework install (commands, agents, workflows, templates, references)
+- [x] **INF-03**: Installer — All 4 platforms (Claude Code, OpenCode, Codex CLI, Gemini CLI)
+- [x] **INF-04**: Installer — GSD coexistence (tsx:* alongside gsd:* with zero conflicts)
+- [x] **INF-05**: Installer — Uninstall support (clean removal from target platform)
 - [ ] **INF-06**: `package.json` — Updated for full framework distribution
 - [ ] **INF-07**: `README.md` — Complete documentation with GSD credits
 - [ ] **INF-08**: GSD attribution — Credits in README, package.json, LICENSE
@@ -212,10 +212,10 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 | CMD-30 | Phase 9 | Complete |
 | CMD-31 | Phase 9 | Complete |
 | CMD-32 | Phase 9 | Complete |
-| INF-02 | Phase 10 | Pending |
-| INF-03 | Phase 10 | Pending |
-| INF-04 | Phase 10 | Pending |
-| INF-05 | Phase 10 | Pending |
+| INF-02 | Phase 10 | Complete |
+| INF-03 | Phase 10 | Complete |
+| INF-04 | Phase 10 | Complete |
+| INF-05 | Phase 10 | Complete |
 | INF-06 | Phase 10 | Pending |
 | INF-07 | Phase 10 | Pending |
 | INF-08 | Phase 10 | Pending |

@@ -199,4 +199,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5/6/7 (parallel-eligible) -
 | 7. PineScript Conversion Workflow | 0/1 | Planned | - |
 | 8. Core Commands | 2/2 | Complete | 2026-03-12 |
 | 9. Extended Commands | 3/3 | Complete   | 2026-03-13 |
-| 10. Installer and Distribution | 0/2 | Not started | - |
+| 10. Installer and Distribution | 1/2 | In Progress|  |
