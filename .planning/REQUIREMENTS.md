@@ -7,14 +7,14 @@
 Every GSD command gets a TSX equivalent (`/tsx:*` prefix).
 
 **Core Workflow:**
-- [ ] **CMD-01**: `/tsx:new-project` — Initialize trading project with domain-specific questioning
-- [ ] **CMD-02**: `/tsx:discuss-phase` — Gather phase implementation context
-- [ ] **CMD-03**: `/tsx:plan-phase` — Create detailed execution plans for a phase
-- [ ] **CMD-04**: `/tsx:execute-phase` — Execute plans with wave-based parallelization
-- [ ] **CMD-05**: `/tsx:verify-work` — Validate built features through conversational UAT
-- [ ] **CMD-06**: `/tsx:audit-milestone` — Audit milestone completion against goals
-- [ ] **CMD-07**: `/tsx:complete-milestone` — Archive milestone, tag release
-- [ ] **CMD-08**: `/tsx:new-milestone` — Start next version cycle
+- [x] **CMD-01**: `/tsx:new-project` — Initialize trading project with domain-specific questioning
+- [x] **CMD-02**: `/tsx:discuss-phase` — Gather phase implementation context
+- [x] **CMD-03**: `/tsx:plan-phase` — Create detailed execution plans for a phase
+- [x] **CMD-04**: `/tsx:execute-phase` — Execute plans with wave-based parallelization
+- [x] **CMD-05**: `/tsx:verify-work` — Validate built features through conversational UAT
+- [x] **CMD-06**: `/tsx:audit-milestone` — Audit milestone completion against goals
+- [x] **CMD-07**: `/tsx:complete-milestone` — Archive milestone, tag release
+- [x] **CMD-08**: `/tsx:new-milestone` — Start next version cycle
 
 **Navigation:**
 - [ ] **CMD-09**: `/tsx:progress` — Show status and route to next action
@@ -180,14 +180,14 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 | WKF-01 | Phase 5 | Complete |
 | WKF-07 | Phase 6 | Complete |
 | WKF-08 | Phase 7 | Complete |
-| CMD-01 | Phase 8 | Pending |
-| CMD-02 | Phase 8 | Pending |
-| CMD-03 | Phase 8 | Pending |
-| CMD-04 | Phase 8 | Pending |
-| CMD-05 | Phase 8 | Pending |
-| CMD-06 | Phase 8 | Pending |
-| CMD-07 | Phase 8 | Pending |
-| CMD-08 | Phase 8 | Pending |
+| CMD-01 | Phase 8 | Complete |
+| CMD-02 | Phase 8 | Complete |
+| CMD-03 | Phase 8 | Complete |
+| CMD-04 | Phase 8 | Complete |
+| CMD-05 | Phase 8 | Complete |
+| CMD-06 | Phase 8 | Complete |
+| CMD-07 | Phase 8 | Complete |
+| CMD-08 | Phase 8 | Complete |
 | CMD-09 | Phase 8 | Pending |
 | CMD-10 | Phase 8 | Pending |
 | CMD-11 | Phase 8 | Pending |

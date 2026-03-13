@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: completed
-stopped_at: Completed 07-01-PLAN.md
-last_updated: "2026-03-13T02:20:28.299Z"
-last_activity: "2026-03-12 -- Completed 07-01: PineScript conversion workflow (1 file, 1018 lines)"
+status: in-progress
+stopped_at: Completed 08-01-PLAN.md
+last_updated: "2026-03-13T02:51:17.142Z"
+last_activity: "2026-03-12 -- Completed 08-01: Core workflow commands (8 files, 472 lines)"
 progress:
   total_phases: 10
   completed_phases: 7
-  total_plans: 17
-  completed_plans: 17
-  percent: 100
+  total_plans: 19
+  completed_plans: 18
+  percent: 95
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-12)
 
 **Core value:** AI agents can take any trading idea and produce a working, live-tradeable TopStepX integration by following TSX's guided workflows
-**Current focus:** Phase 7 -- PineScript Conversion Workflow (PineScript-to-TopStepX bot conversion)
+**Current focus:** Phase 8 -- Core Commands (slash command entry points for workflows)
 
 ## Current Position
 
-Phase: 7 of 10 (PineScript Conversion Workflow) -- COMPLETE
-Plan: 1 of 1 in current phase (all complete)
-Status: Phase 7 complete
-Last activity: 2026-03-12 -- Completed 07-01: PineScript conversion workflow (1 file, 1018 lines)
+Phase: 8 of 10 (Core Commands)
+Plan: 1 of 2 in current phase (08-01 complete)
+Status: Phase 8 in progress
+Last activity: 2026-03-12 -- Completed 08-01: Core workflow commands (8 files, 472 lines)
 
-Progress: [██████████] 100% (Overall: 17/17 plans complete)
+Progress: [██████████] 95% (Overall: 18/19 plans complete)
 
 ## Performance Metrics
 
@@ -61,9 +61,11 @@ Progress: [██████████] 100% (Overall: 17/17 plans complete)
 
 | Phase 07 P01 | 6min | 2 tasks | 1 files |
 
+| Phase 08 P01 | 3min | 2 tasks | 8 files |
+
 **Recent Trend:**
-- Last 5 plans: 6min, 6min, 5min, 5min, 6min
-- Trend: Phase 7 PineScript conversion workflow completes fast (single-file net-new workflow)
+- Last 5 plans: 5min, 5min, 6min, 3min
+- Trend: Phase 8 command creation is fastest yet (mechanical naming adaptation)
 
 *Updated after each plan completion*
 
@@ -133,16 +135,20 @@ Recent decisions affecting current work:
 - [Phase 07]: SAF-04 grep verification self-contained in Step 10 -- executor needs no external lookups during safety check
 - [Phase 07]: PineScript-specific 9-step code generation order adds bar data management and position reversal beyond adapt-language 6 steps
 
+- [08-01]: All commands use $HOME/.claude/topstepx/ canonical path prefix for cross-platform portability
+- [08-01]: discuss-phase preserves full process section content for self-contained execution
+- [08-01]: complete-milestone preserves full 8-step process inline with /tsx: routing throughout
+
 ### Pending Todos
 
 None yet.
 
 ### Blockers/Concerns
 
-None -- Phases 1-7 complete (17/17 plans), ready for Phase 8.
+None -- Phases 1-7 complete, Phase 8 Plan 1 complete (18/19 plans).
 
 ## Session Continuity
 
-Last session: 2026-03-13T02:20:28.297Z
-Stopped at: Completed 07-01-PLAN.md
+Last session: 2026-03-13T02:51:17.142Z
+Stopped at: Completed 08-01-PLAN.md
 Resume file: None
