@@ -32,13 +32,13 @@ Every GSD command gets a TSX equivalent (`/tsx:*` prefix).
 **Utilities:**
 - [x] **CMD-18**: `/tsx:map-codebase` — Analyze existing trading codebase
 - [x] **CMD-19**: `/tsx:quick` — Execute ad-hoc tasks with GSD guarantees
-- [ ] **CMD-20**: `/tsx:debug` — Systematic debugging for trading integrations
+- [x] **CMD-20**: `/tsx:debug` — Systematic debugging for trading integrations
 - [x] **CMD-21**: `/tsx:add-todo` — Capture idea for later
 - [x] **CMD-22**: `/tsx:check-todos` — List pending todos
 - [x] **CMD-23**: `/tsx:settings` — Configure workflow toggles
 - [x] **CMD-24**: `/tsx:set-profile` — Switch model profile
 - [x] **CMD-25**: `/tsx:update` — Update TSX to latest version
-- [ ] **CMD-26**: `/tsx:research-phase` — Deep domain research for a phase
+- [x] **CMD-26**: `/tsx:research-phase` — Deep domain research for a phase
 - [x] **CMD-27**: `/tsx:validate-phase` — Retroactive validation
 - [x] **CMD-28**: `/tsx:health` — Check .planning/ integrity
 - [x] **CMD-29**: `/tsx:cleanup` — Clean up temporary files
@@ -199,13 +199,13 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 | CMD-17 | Phase 9 | Complete |
 | CMD-18 | Phase 9 | Complete |
 | CMD-19 | Phase 9 | Complete |
-| CMD-20 | Phase 9 | Pending |
+| CMD-20 | Phase 9 | Complete |
 | CMD-21 | Phase 9 | Complete |
 | CMD-22 | Phase 9 | Complete |
 | CMD-23 | Phase 9 | Complete |
 | CMD-24 | Phase 9 | Complete |
 | CMD-25 | Phase 9 | Complete |
-| CMD-26 | Phase 9 | Pending |
+| CMD-26 | Phase 9 | Complete |
 | CMD-27 | Phase 9 | Complete |
 | CMD-28 | Phase 9 | Complete |
 | CMD-29 | Phase 9 | Complete |
