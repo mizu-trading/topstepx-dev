@@ -131,10 +131,10 @@ Plans:
   3. The workflow includes a signal confirmation decision step that identifies and flags repainting indicators, defaulting to confirmed-bar-only signals
   4. The workflow audits multi-timeframe references (request.security) for lookahead bias and applies [1] offset defaults
   5. Generated bot code includes all safety guardrails (bracket orders, risk limits, JWT refresh, rate limiting, enum constants) as non-optional defaults
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 07-01: TBD
+- [ ] 07-01-PLAN.md — Create adapt-pinescript.md workflow with repainting audit, MTF audit, conversion mapping, and SAF-01 through SAF-05 safety verification
 
 ### Phase 8: Core Commands
 **Goal**: Users can invoke all primary framework operations through /tsx:* commands that delegate to workflows
@@ -195,7 +195,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5/6/7 (parallel-eligible) -
 | 4. Core Execution Workflows | 4/4 | Complete | 2026-03-12 |
 | 5. From-Scratch Workflow | 0/1 | Planned | - |
 | 6. Language Adaptation Workflow | 0/1 | Planned | - |
-| 7. PineScript Conversion Workflow | 0/TBD | Not started | - |
+| 7. PineScript Conversion Workflow | 0/1 | Planned | - |
 | 8. Core Commands | 0/TBD | Not started | - |
 | 9. Extended Commands | 0/TBD | Not started | - |
 | 10. Installer and Distribution | 0/TBD | Not started | - |
