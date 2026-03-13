@@ -20,7 +20,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 6: Language Adaptation Workflow** - Cross-language TopStepX code conversion
 - [ ] **Phase 7: PineScript Conversion Workflow** - TradingView PineScript to live TopStepX bot conversion
 - [x] **Phase 8: Core Commands** - Primary command entry points for all main workflows
-- [x] **Phase 9: Extended Commands** - Phase management, utility, and TSX-specific commands (completed 2026-03-13)
+- [x] **Phase 9: Extended Commands** - Phase management, utility, and TSX-specific commands (completed 2026-03-13)
 - [ ] **Phase 10: Installer and Distribution** - Expanded installer, packaging, and documentation
 
 ## Phase Details
@@ -163,9 +163,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 09-01-PLAN.md — Create 5 phase management commands + 2 TSX-specific commands (7 simple commands)
-- [ ] 09-02-PLAN.md — Create 11 simple utility commands (add-todo through add-tests)
-- [ ] 09-03-PLAN.md — Create 2 rich utility commands (debug, research-phase) + validate all 32 commands
+- [x] 09-01-PLAN.md — Create 5 phase management commands + 2 TSX-specific commands (7 simple commands)
+- [x] 09-02-PLAN.md — Create 11 simple utility commands (add-todo through add-tests)
+- [x] 09-03-PLAN.md — Create 2 rich utility commands (debug, research-phase) + validate all 32 commands
 
 ### Phase 10: Installer and Distribution
 **Goal**: TSX is a complete, installable npm package that distributes the full framework to all 4 target platforms alongside GSD
@@ -177,11 +177,11 @@ Plans:
   3. TSX installs alongside GSD without conflicts (/tsx:* commands coexist with /gsd:*, tsx-* agents coexist with gsd-* agents)
   4. Uninstall support cleanly removes all TSX-installed files from the target platform
   5. package.json, README.md, and LICENSE are updated with full framework branding and visible GSD attribution
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 10-01: TBD
-- [ ] 10-02: TBD
+- [ ] 10-01-PLAN.md — Expand bin/install.js with full framework install, per-platform transformations, and uninstall support
+- [ ] 10-02-PLAN.md — Update package.json, rewrite README.md, add GSD attribution to LICENSE
 
 ## Progress
 
@@ -199,4 +199,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5/6/7 (parallel-eligible) -
 | 7. PineScript Conversion Workflow | 0/1 | Planned | - |
 | 8. Core Commands | 2/2 | Complete | 2026-03-12 |
 | 9. Extended Commands | 3/3 | Complete   | 2026-03-13 |
-| 10. Installer and Distribution | 0/TBD | Not started | - |
+| 10. Installer and Distribution | 0/2 | Not started | - |
