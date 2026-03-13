@@ -1,6 +1,6 @@
 {
   "name": "topstepx-dev",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "TSX -- AI framework for building TopStepX trading bots. Extends GSD (Get Shit Done) with trading domain workflows, agents, and templates.",
   "bin": {
     "topstepx-dev": "bin/install.js"
