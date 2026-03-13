@@ -106,9 +106,9 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 - [x] **INF-03**: Installer — All 4 platforms (Claude Code, OpenCode, Codex CLI, Gemini CLI)
 - [x] **INF-04**: Installer — GSD coexistence (tsx:* alongside gsd:* with zero conflicts)
 - [x] **INF-05**: Installer — Uninstall support (clean removal from target platform)
-- [ ] **INF-06**: `package.json` — Updated for full framework distribution
-- [ ] **INF-07**: `README.md` — Complete documentation with GSD credits
-- [ ] **INF-08**: GSD attribution — Credits in README, package.json, LICENSE
+- [x] **INF-06**: `package.json` — Updated for full framework distribution
+- [x] **INF-07**: `README.md` — Complete documentation with GSD credits
+- [x] **INF-08**: GSD attribution — Credits in README, package.json, LICENSE
 
 ### Safety (SAF)
 
@@ -216,9 +216,9 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 | INF-03 | Phase 10 | Complete |
 | INF-04 | Phase 10 | Complete |
 | INF-05 | Phase 10 | Complete |
-| INF-06 | Phase 10 | Pending |
-| INF-07 | Phase 10 | Pending |
-| INF-08 | Phase 10 | Pending |
+| INF-06 | Phase 10 | Complete |
+| INF-07 | Phase 10 | Complete |
+| INF-08 | Phase 10 | Complete |
 
 ---
 *76 requirements across 7 categories*

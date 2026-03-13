@@ -3,11 +3,27 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
+stopped_at: Completed 10-02-PLAN.md
+last_updated: "2026-03-13T03:59:43.030Z"
+last_activity: "2026-03-13 -- Completed 10-01: Full framework installer (1 file, 879 lines)"
+progress:
+  total_phases: 10
+  completed_phases: 10
+  total_plans: 24
+  completed_plans: 24
+  percent: 100
+---
+
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+status: in-progress
 stopped_at: Completed 10-01-PLAN.md
 last_updated: "2026-03-13T03:54:31.731Z"
 last_activity: "2026-03-13 -- Completed 09-02: Utility commands (11 files, 431 lines)"
 progress:
-  total_phases: 10
+  [██████████] 100%
   completed_phases: 9
   total_plans: 24
   completed_plans: 23
@@ -105,6 +121,7 @@ Progress: [██████████] 96% (Overall: 23/24 plans complete)
 *Updated after each plan completion*
 | Phase 09-extended-commands P03 | 4min | 2 tasks | 2 files |
 | Phase 10-installer-and-distribution P01 | 6min | 2 tasks | 1 files |
+| Phase 10 P02 | 2min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -188,6 +205,9 @@ Recent decisions affecting current work:
 - [Phase 10-installer-and-distribution]: Single-file installer (879 lines) matching GSD pattern -- no lib/ modules
 - [Phase 10-installer-and-distribution]: CRLF normalization in frontmatter parser for Windows compatibility
 - [Phase 10-installer-and-distribution]: Codex agents as skill directories (SKILL.md) rather than config.toml merging for v1
+- [Phase 10-02]: commands/ added to files array as critical gate for npm distribution of framework commands
+- [Phase 10-02]: README restructured from API skill docs to full framework documentation with 5 command categories
+- [Phase 10-02]: GSD attribution placed in dedicated README section, package.json credits field, and LICENSE appendix
 
 ### Pending Todos
 
@@ -199,6 +219,6 @@ None -- Phases 1-8 complete (19/19 plans), Phase 9 Plans 1-2 complete (21/22 pla
 
 ## Session Continuity
 
-Last session: 2026-03-13T03:54:31.728Z
-Stopped at: Completed 10-01-PLAN.md
+Last session: 2026-03-13T03:59:43.027Z
+Stopped at: Completed 10-02-PLAN.md
 Resume file: None
