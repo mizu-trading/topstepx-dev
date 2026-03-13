@@ -81,7 +81,9 @@ function rewritePaths(content, platform) {
 // ── Frontmatter parsing ───────────────────────────────────────────────
 
 function parseFrontmatter(content) {
-  const lines = content.split('\n');
+  // Normalize line endings to LF for consistent parsing
+  const normalized = content.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  const lines = normalized.split('\n');
   if (lines[0].trim() !== '---') {
     return { frontmatter: {}, body: content };
   }
@@ -189,8 +191,8 @@ function transformCommandOpenCode(filename, content) {
   const lines = ['---'];
   if (fm.name) lines.push(`name: ${fm.name}`);
   if (fm.description) lines.push(`description: ${fm.description}`);
-  if (fm['argument-hint']) lines.push(`argument-hint: "${fm['argument-hint']}"`);
-  if (fm['argument-instructions']) lines.push(`argument-instructions: "${fm['argument-instructions']}"`);
+  if (fm['argument-hint']) lines.push(`argument-hint: ${fm['argument-hint']}`);
+  if (fm['argument-instructions']) lines.push(`argument-instructions: ${fm['argument-instructions']}`);
 
   // Convert tools to object format
   if (tools.length > 0) {
