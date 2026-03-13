@@ -23,11 +23,11 @@ Every GSD command gets a TSX equivalent (`/tsx:*` prefix).
 - [x] **CMD-12**: `/tsx:help` — Show all TSX commands
 
 **Phase Management:**
-- [ ] **CMD-13**: `/tsx:add-phase` — Append phase to roadmap
-- [ ] **CMD-14**: `/tsx:insert-phase` — Insert urgent work as decimal phase
-- [ ] **CMD-15**: `/tsx:remove-phase` — Remove future phase
-- [ ] **CMD-16**: `/tsx:list-phase-assumptions` — Surface approach assumptions
-- [ ] **CMD-17**: `/tsx:plan-milestone-gaps` — Create phases to close audit gaps
+- [x] **CMD-13**: `/tsx:add-phase` — Append phase to roadmap
+- [x] **CMD-14**: `/tsx:insert-phase` — Insert urgent work as decimal phase
+- [x] **CMD-15**: `/tsx:remove-phase` — Remove future phase
+- [x] **CMD-16**: `/tsx:list-phase-assumptions` — Surface approach assumptions
+- [x] **CMD-17**: `/tsx:plan-milestone-gaps` — Create phases to close audit gaps
 
 **Utilities:**
 - [ ] **CMD-18**: `/tsx:map-codebase` — Analyze existing trading codebase
@@ -45,8 +45,8 @@ Every GSD command gets a TSX equivalent (`/tsx:*` prefix).
 - [ ] **CMD-30**: `/tsx:add-tests` — Add tests to existing phase
 
 **TSX-Specific:**
-- [ ] **CMD-31**: `/tsx:adapt-language` — Convert TopStepX code between languages
-- [ ] **CMD-32**: `/tsx:adapt-pinescript` — Convert PineScript strategy to TopStepX trading bot
+- [x] **CMD-31**: `/tsx:adapt-language` — Convert TopStepX code between languages
+- [x] **CMD-32**: `/tsx:adapt-pinescript` — Convert PineScript strategy to TopStepX trading bot
 
 ### Agents (AGT)
 
@@ -192,11 +192,11 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 | CMD-10 | Phase 8 | Complete |
 | CMD-11 | Phase 8 | Complete |
 | CMD-12 | Phase 8 | Complete |
-| CMD-13 | Phase 9 | Pending |
-| CMD-14 | Phase 9 | Pending |
-| CMD-15 | Phase 9 | Pending |
-| CMD-16 | Phase 9 | Pending |
-| CMD-17 | Phase 9 | Pending |
+| CMD-13 | Phase 9 | Complete |
+| CMD-14 | Phase 9 | Complete |
+| CMD-15 | Phase 9 | Complete |
+| CMD-16 | Phase 9 | Complete |
+| CMD-17 | Phase 9 | Complete |
 | CMD-18 | Phase 9 | Pending |
 | CMD-19 | Phase 9 | Pending |
 | CMD-20 | Phase 9 | Pending |
@@ -210,8 +210,8 @@ Every GSD agent gets a TSX equivalent (`tsx-*` prefix) with trading domain conte
 | CMD-28 | Phase 9 | Pending |
 | CMD-29 | Phase 9 | Pending |
 | CMD-30 | Phase 9 | Pending |
-| CMD-31 | Phase 9 | Pending |
-| CMD-32 | Phase 9 | Pending |
+| CMD-31 | Phase 9 | Complete |
+| CMD-32 | Phase 9 | Complete |
 | INF-02 | Phase 10 | Pending |
 | INF-03 | Phase 10 | Pending |
 | INF-04 | Phase 10 | Pending |

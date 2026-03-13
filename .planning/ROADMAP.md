@@ -160,11 +160,12 @@ Plans:
   2. All 13 utility commands exist (/tsx:map-codebase, quick, debug, add-todo, check-todos, settings, set-profile, update, research-phase, validate-phase, health, cleanup, add-tests) with appropriate workflow delegation
   3. Both TSX-specific commands exist (/tsx:adapt-language, adapt-pinescript) and delegate to their respective workflows from Phases 6 and 7
   4. All commands are thin entry points following the same schema as Phase 8 core commands
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 09-01: TBD
-- [ ] 09-02: TBD
+- [ ] 09-01-PLAN.md — Create 5 phase management commands + 2 TSX-specific commands (7 simple commands)
+- [ ] 09-02-PLAN.md — Create 11 simple utility commands (add-todo through add-tests)
+- [ ] 09-03-PLAN.md — Create 2 rich utility commands (debug, research-phase) + validate all 32 commands
 
 ### Phase 10: Installer and Distribution
 **Goal**: TSX is a complete, installable npm package that distributes the full framework to all 4 target platforms alongside GSD
@@ -196,6 +197,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5/6/7 (parallel-eligible) -
 | 5. From-Scratch Workflow | 0/1 | Planned | - |
 | 6. Language Adaptation Workflow | 0/1 | Planned | - |
 | 7. PineScript Conversion Workflow | 0/1 | Planned | - |
-| 8. Core Commands | 0/2 | Not started | - |
-| 9. Extended Commands | 0/TBD | Not started | - |
+| 8. Core Commands | 2/2 | Complete | 2026-03-12 |
+| 9. Extended Commands | 0/3 | Not started | - |
 | 10. Installer and Distribution | 0/TBD | Not started | - |
