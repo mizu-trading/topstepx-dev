@@ -510,4 +510,509 @@ Store the signal confirmation mode for use in:
 - Step 9 (Code Generation): determines whether signal evaluation runs on bar close or every tick
 - Step 10 (Safety Verification): SAF-04 confirmed bar gate check
 
+## 6. Target Language Selection
+
+### Interactive Mode
+
+Use AskUserQuestion:
+- header: "Target Language"
+- question: "Which language should the converted bot use?"
+- options:
+  - "JavaScript/TypeScript (Node.js)" -- Uses @microsoft/signalr, trading-signals, built-in fetch. Best for developers familiar with Node.js async/await patterns.
+  - "Python" -- Uses pysignalr, pandas-ta, aiohttp. Best for developers familiar with Python async and data science tooling.
+
+### Auto-Mode
+
+Use the target language from command arguments. Log the selection:
+
+```
+[Auto] Target language: [javascript / python]
+```
+
+### Language Profile (Compact)
+
+Load the minimal language profile needed for PineScript conversion code generation. For the complete 11-property profiles, reference `@topstepx/workflows/adapt-language.md`.
+
+**JavaScript/TypeScript (Node.js)**
+
+| Property | Value |
+|----------|-------|
+| Runtime | Node.js 18+ |
+| Indicator Library | `trading-signals` |
+| Naming Convention | camelCase (variables/functions), PascalCase (classes) |
+| Enum Style | Plain objects (`const OrderSide = { Bid: 0, Ask: 1 }`) |
+| SignalR Client | `@microsoft/signalr` (HubConnectionBuilder) |
+| HTTP Client | built-in `fetch` |
+| Bot Scaffold | `@topstepx/templates/bot-scaffold-js.md` |
+
+**Python**
+
+| Property | Value |
+|----------|-------|
+| Runtime | Python 3.11+ |
+| Indicator Library | `pandas-ta` |
+| Naming Convention | snake_case (variables/functions), PascalCase (classes) |
+| Enum Style | `IntEnum` classes (`class OrderSide(IntEnum): Bid = 0; Ask = 1`) |
+| SignalR Client | `pysignalr` (SignalRClient) |
+| HTTP Client | `aiohttp` (ClientSession) |
+| Bot Scaffold | `@topstepx/templates/bot-scaffold-python.md` |
+
+## 7. Conversion Mapping
+
+**Map every PineScript construct found in Step 2 to its TopStepX API equivalent using `@topstepx/references/PINESCRIPT.md` mapping tables.**
+
+### Map Strategy Functions
+
+For each `strategy.entry()`, `strategy.exit()`, `strategy.close()`, `strategy.cancel()` found in Step 2 categories 4 and 5:
+
+- Map to TopStepX API call using the `<pinescript_mapping>` Strategy Functions table
+- Reference `@topstepx/references/PINESCRIPT.md` for the complete mapping with parameter details
+- Flag auto-reversal patterns: any `strategy.entry()` that enters opposite direction while positioned needs explicit close + entry
+
+### Map TA Functions
+
+For each `ta.*` function found in Step 2 category 3:
+
+- Map to target language indicator library:
+  - JavaScript: `trading-signals` classes (SMA, EMA, RSI, MACD, BollingerBands, ATR, Stochastic)
+  - Python: `pandas-ta` functions (ta.sma, ta.ema, ta.rsi, ta.macd, ta.bbands, ta.atr, ta.stoch)
+- Reference `@topstepx/references/PINESCRIPT.md` TA Function Conversion Mapping table
+- For `ta.crossover()` / `ta.crossunder()`: generate manual comparison logic (no direct library equivalent)
+
+### Map Inputs to Config
+
+For each `input.*()` found in Step 2 category 2:
+
+- Create a config parameter entry with:
+  - Property name: variable name from PineScript
+  - Type: int / float / bool / string
+  - Default: the `defval` parameter from the PineScript input
+  - Description: the `title` parameter from the PineScript input
+
+Every PineScript input MUST become a configurable parameter. No magic numbers.
+
+### Flag Visual-Only Elements
+
+From Step 2 category 9, report the count of visual-only elements that will be SKIPPED:
+
+```
+Visual-only elements skipped: [N] (plot: [n], plotshape: [n], bgcolor: [n], ...)
+```
+
+### Flag Position Reversal Handling
+
+From Step 2 category 6, document where the converted bot needs explicit close + entry logic instead of PineScript's auto-reversal:
+
+```
+Position reversal handling required:
+  - Line [N]: strategy.entry("Short", strategy.short) while potentially Long -> needs explicit close + entry
+  - Line [N]: strategy.entry("Long", strategy.long) while potentially Short -> needs explicit close + entry
+```
+
+### Flag Bar Data Infrastructure
+
+Document that the converted bot MUST generate bar data management infrastructure that PineScript provides implicitly:
+
+```
+Bar data infrastructure required:
+  - History warm-up: fetch [N] bars via /api/History/retrieveBars for indicator initialization
+  - Tick-to-bar aggregation: aggregate real-time ticks/quotes into OHLCV bars
+  - Bar completion detection: detect bar boundaries based on time intervals
+```
+
+The bar count for warm-up = max indicator lookback period found in Step 2 category 3 (e.g., if the longest indicator uses 200 periods, warm up with 200+ bars).
+
+### Interactive Mode: Confirm Mapping
+
+Use AskUserQuestion:
+- header: "Conversion Mapping"
+- question: "Review the mapping summary above. Are these mappings correct?"
+- options:
+  - "Looks good -- proceed" -- Continue with the mapping as shown
+  - "I need to adjust some mappings" -- Let me provide corrections
+
+If the user selects "I need to adjust some mappings":
+- Ask which PineScript construct needs a different mapping
+- Update the mapping table with corrections
+- Re-display for confirmation
+
+### Auto-Mode: Skip Confirmation
+
+Log the mapping summary without confirmation:
+
+```
+[Auto] Conversion mapping complete:
+  Strategy functions: [N] mapped
+  TA functions: [N] mapped
+  Inputs to config: [N] mapped
+  Visual-only skipped: [N]
+  Position reversals flagged: [N]
+```
+
+## 8. Conversion Report Generation
+
+**Populate the `@topstepx/templates/pinescript-conversion.md` template with data collected in Steps 2-7.**
+
+### Fill Report Sections
+
+Using the pinescript-conversion.md template structure, populate:
+
+**Source Analysis** (from Step 2):
+- PineScript version, strategy name, strategy type, lines of code, complexity
+- Indicators Used table (indicator name, PineScript function, parameters, purpose)
+- Entry/Exit Logic Summary (plain English descriptions)
+
+**Repainting Audit (SAF-04)** (from Step 3):
+- Overall Repainting Risk level
+- 4-check results table with status, details, mitigation applied
+- Repainting Issues Found with line references, original code, fix applied, impact
+
+**Multi-Timeframe Audit** (from Step 4):
+- Uses request.security: Yes/No
+- Call-by-call audit table (timeframe, data, lookahead, offset, safe)
+- Fix applied description
+
+**Conversion Mapping** (from Step 7):
+- Complete PineScript construct to TopStepX equivalent table
+- Notes for each mapping including caveats
+
+**Bar Close Policy** (from Step 5):
+- Execution Model: Confirmed-bar or Tick-based
+- Rationale for the chosen model
+
+**Safety Integration** (pending until Step 10):
+- All SAF-01 through SAF-05 rows with "Applied: Pending" status
+- Will be updated after Step 10 verification
+
+**Conversion Confidence:**
+- Indicator accuracy, Signal fidelity, Safety compliance, Edge case handling
+
+### Write the Report
+
+Write the populated report to `.planning/pinescript-conversion.md`.
+
+### Interactive Mode: Offer Review
+
+Present a summary:
+
+```
+Conversion Report Generated
+============================
+Location: .planning/pinescript-conversion.md
+Source: [strategy name] (v[version], [N] lines)
+Target: [language]
+Indicators: [N] mapped
+Inputs: [N] -> config params
+Repainting Risk: [level]
+MTF Issues: [N] / N/A
+```
+
+Use AskUserQuestion:
+- header: "Conversion Report"
+- question: "Review the conversion report summary above. Ready to proceed with code generation?"
+- options:
+  - "Proceed with code generation" -- Generate target code based on this report
+  - "Let me review the full report first" -- Open .planning/pinescript-conversion.md for detailed review
+
+### Auto-Mode: Proceed Without Review
+
+Log the report path and proceed:
+
+```
+[Auto] Conversion report written: .planning/pinescript-conversion.md
+Proceeding to code generation...
+```
+
+### Commit the Report
+
+```bash
+node "$HOME/.claude/topstepx/bin/tsx-tools.cjs" commit "docs: PineScript conversion report" --files .planning/pinescript-conversion.md
+```
+
+## 9. Code Generation
+
+**Generate target code file-by-file using the target language's bot scaffold as the structural base.**
+
+### Load Bot Scaffold
+
+Load the target language's bot scaffold template:
+- JavaScript/TypeScript target: `@topstepx/templates/bot-scaffold-js.md`
+- Python target: `@topstepx/templates/bot-scaffold-python.md`
+
+The scaffold provides the structural skeleton with all safety infrastructure (SAF-01 through SAF-05) already implemented. The workflow injects PineScript strategy logic translated to target language idioms.
+
+### Conversion Order (MANDATORY -- PineScript-Specific Trading Build Order)
+
+Convert PineScript strategy to target code in this exact 9-step order. This extends the proven trading build order with PineScript-specific additions (steps 6 and 9):
+
+**1. Safety infrastructure first:**
+- Enum constant definitions (OrderSide, OrderType, OrderStatus, PositionType, TimeInForce, BarTimeUnit)
+- Config object/dictionary from ALL PineScript inputs found in Step 2 category 2 -- every `input.*()` becomes a named, configurable parameter with its PineScript default value. Never hardcode input defaults as magic numbers.
+- Risk parameter definitions (max position size, stop loss ticks, take profit ticks, max daily loss)
+- Apply target language naming convention (camelCase for JS, snake_case for Python)
+- Apply target language enum style (plain objects for JS, IntEnum classes for Python)
+
+**2. Authentication:**
+- TokenManager class / token refresh mechanism
+- Login flow (`POST /api/Auth/loginKey`)
+- Bearer header setup for all API calls
+- 23-hour proactive refresh timer (SAF-02)
+- Re-authentication fallback on refresh failure
+
+**3. Rate limiting:**
+- RateLimiter class with sliding window
+- RATE_LIMITS constants (HISTORY: 50/30s, GENERAL: 200/60s)
+- Wait-for-slot pattern before every API call (SAF-03)
+- Apply target language async pattern
+
+**4. REST API integration:**
+- Order placement function with bracket defaults (SAF-01: stopLossBracket, takeProfitBracket)
+- Position sizing enforcement via `Math.min` (JS) / `min()` (Python) (SAF-01)
+- Safe order placement with 3-mode error handling (SAF-05: 429 retry, rejection logging, connection error catch)
+- Account search, contract lookup, position query functions
+- History bar retrieval with history rate limiter
+
+**5. WebSocket integration:**
+- Market Hub connection with access token factory
+- User Hub connection with access token factory
+- Event handlers: GatewayQuote, GatewayOrder, GatewayPosition, GatewayTrade
+- Subscription calls: SubscribeContractQuotes, SubscribeAccounts, SubscribeOrders, SubscribePositions, SubscribeTrades
+- Reconnection handlers with automatic re-subscribe (SAF-05)
+- Apply target language SignalR client patterns (HubConnectionBuilder for JS, SignalRClient for Python)
+
+**6. Bar data management (PineScript-specific):**
+This infrastructure does NOT exist in PineScript -- the engine provides bar data implicitly. The converted bot MUST create it.
+
+- **History warm-up:** Fetch historical bars via `POST /api/History/retrieveBars` for indicator initialization. Bar count = max indicator lookback period from Step 2.
+- **Tick-to-bar aggregation:** Aggregate real-time ticks/quotes from GatewayQuote events into OHLCV bars with configurable interval.
+- **Bar completion detection:** Detect bar boundaries based on time intervals. When a new bar starts, the previous bar is confirmed.
+- **Bar history buffer:** Maintain a rolling buffer of completed bars for indicator calculations.
+
+Example structure for JavaScript:
+```javascript
+class BarManager {
+  constructor(intervalMinutes) { /* ... */ }
+  async warmUp(contractId, count, interval) { /* fetch via /api/History/retrieveBars */ }
+  onTick(timestamp, price, volume) { /* aggregate into current bar, detect completion */ }
+  getConfirmedBars() { /* return completed bars only */ }
+}
+```
+
+Example structure for Python:
+```python
+class BarManager:
+    def __init__(self, interval_minutes): ...
+    async def warm_up(self, contract_id, count, interval): ...
+    def on_tick(self, timestamp, price, volume): ...
+    def get_confirmed_bars(self): ...
+```
+
+**7. Indicator calculations:**
+- Translate each `ta.*` function found in Step 2 to target language indicator library using mapping from Step 7
+- JavaScript: instantiate `trading-signals` classes (SMA, EMA, RSI, etc.), feed bar data from BarManager
+- Python: call `pandas-ta` functions on DataFrame built from BarManager bar history
+- For `ta.crossover()` / `ta.crossunder()`: generate manual comparison logic checking current vs previous values
+
+**8. Signal evaluation:**
+- Translate entry/exit conditions from PineScript Step 2 categories 4 and 5
+- Apply confirmed-bar gate based on Step 5 decision:
+  - Confirmed-bar mode: signal evaluation triggered by BarManager bar completion event
+  - Tick-based mode: signal evaluation triggered on each GatewayQuote event
+- Generate condition evaluation functions matching the PineScript logic
+- Connect signals to order placement functions from step 4
+
+**9. Position management (PineScript-specific):**
+PineScript's auto-reversal does NOT exist in TopStepX. The converted bot MUST implement:
+
+- **Explicit reversal logic:** Before entering a position, check current position state. If reversing direction (e.g., entering short while long), first close the existing position, then enter the new one.
+- **Partial exit support:** Map `qty_percent` from `strategy.exit()` to `POST /api/Position/partialCloseContract` with calculated size.
+- **Position reconciliation:** After order events, reconcile expected vs actual position via `POST /api/Position/searchOpen`. Handle partial fills and slippage.
+
+### Apply Naming Conventions
+
+Use the target language profile's naming convention for ALL generated code:
+- **JavaScript/TypeScript:** camelCase for variables/functions, PascalCase for classes
+- **Python:** snake_case for variables/functions, PascalCase for classes
+
+### Atomic Commits
+
+Commit each converted file individually as it is generated:
+
+```bash
+node "$HOME/.claude/topstepx/bin/tsx-tools.cjs" commit "feat: convert [PineScript element] to [target language]" --files [target_file_path]
+```
+
+This ensures partial progress is preserved if the conversion is interrupted.
+
+## 10. Safety Verification
+
+**MANDATORY -- Conversion is BLOCKED until ALL safety checks pass.**
+
+This step runs in BOTH interactive and auto mode -- it is NEVER skipped.
+
+### Run Grep-Based Verification
+
+For each safety pattern, run grep verification against ALL generated target files. The grep commands below are self-contained -- execute them directly.
+
+**For JavaScript/TypeScript target:**
+
+| Safety Pattern | Grep Command | Expected |
+|----------------|-------------|----------|
+| SAF-01: Enum constants | `grep -c "OrderSide\|OrderType\|OrderStatus\|PositionType\|TimeInForce" [target_files]` | >= 5 |
+| SAF-01: Bracket defaults | `grep -c "stopLossBracket\|takeProfitBracket" [target_files]` | >= 2 |
+| SAF-01: Position sizing | `grep -c "Math.min" [target_files]` | >= 1 |
+| SAF-02: JWT refresh | `grep -c "refreshToken\|refreshInterval\|23.*60.*60" [target_files]` | >= 1 |
+| SAF-03: Rate limiter | `grep -c "RateLimiter\|RATE_LIMITS\|waitForSlot" [target_files]` | >= 2 |
+| SAF-04: Confirmed bar gate | `grep -c "isConfirmed\|bar.*confirmed\|barCompleted" [target_files]` | >= 1 |
+| SAF-04: No repainting logic | `grep -c "isConfirmed.*&&\|confirmed.*=.*true" [target_files]` | >= 1 |
+| SAF-05: Error handling | `grep -c "placeOrderSafe\|status === 429\|\.catch\|try.*catch" [target_files]` | >= 2 |
+| SAF-05: Graceful shutdown | `grep -c "SIGINT\|SIGTERM\|shutdown" [target_files]` | >= 2 |
+
+**For Python target:**
+
+| Safety Pattern | Grep Command | Expected |
+|----------------|-------------|----------|
+| SAF-01: Enum constants | `grep -c "OrderSide\|OrderType\|OrderStatus\|PositionType\|TimeInForce\|IntEnum" [target_files]` | >= 5 |
+| SAF-01: Bracket defaults | `grep -c "stopLossBracket\|takeProfitBracket\|stop_loss\|take_profit" [target_files]` | >= 2 |
+| SAF-01: Position sizing | `grep -c "min(" [target_files]` | >= 1 |
+| SAF-02: JWT refresh | `grep -c "refresh_token\|refresh_interval\|23.*60.*60" [target_files]` | >= 1 |
+| SAF-03: Rate limiter | `grep -c "RateLimiter\|RATE_LIMITS\|wait_for_slot" [target_files]` | >= 2 |
+| SAF-04: Confirmed bar gate | `grep -c "is_confirmed\|bar.*confirmed\|bar_completed" [target_files]` | >= 1 |
+| SAF-04: No repainting logic | `grep -c "is_confirmed.*and\|confirmed.*=.*True" [target_files]` | >= 1 |
+| SAF-05: Error handling | `grep -c "place_order_safe\|status == 429\|except\|try:" [target_files]` | >= 2 |
+| SAF-05: Graceful shutdown | `grep -c "SIGINT\|SIGTERM\|shutdown\|signal\." [target_files]` | >= 2 |
+
+### Present Results
+
+Display the verification results as a pass/fail table:
+
+```
+Safety Verification Results
+============================
+
+| SAF Pattern | Check | Result |
+|-------------|-------|--------|
+| SAF-01: Enum constants | OrderSide, OrderType, etc. | [PASS/FAIL] |
+| SAF-01: Bracket defaults | stopLossBracket, takeProfitBracket | [PASS/FAIL] |
+| SAF-01: Position sizing | Math.min / min() | [PASS/FAIL] |
+| SAF-02: JWT refresh | refreshToken, 23hr interval | [PASS/FAIL] |
+| SAF-03: Rate limiter | RateLimiter, RATE_LIMITS | [PASS/FAIL] |
+| SAF-04: Confirmed bar gate | isConfirmed / is_confirmed | [PASS/FAIL] |
+| SAF-04: No repainting logic | confirmed gate in signal eval | [PASS/FAIL] |
+| SAF-05: Error handling | placeOrderSafe, 429 handling | [PASS/FAIL] |
+| SAF-05: Graceful shutdown | SIGINT, SIGTERM, shutdown | [PASS/FAIL] |
+
+Status: [ALL PASSED / N FAILED]
+Safety Confidence: [HIGH / BLOCKED]
+```
+
+### If ANY Check FAILS
+
+**The conversion is INCOMPLETE. Do NOT proceed to Step 11.**
+
+For each failed check:
+1. Display the missing pattern with its SAF-ID
+2. Show what the pattern should look like in the target language (reference `@topstepx/references/safety-patterns.md` for the canonical implementation)
+3. Identify which target file should contain the pattern
+
+```
+SAFETY VERIFICATION FAILED
+============================
+
+FAILED: SAF-04 Confirmed bar gate
+  Missing: isConfirmed / is_confirmed in target code
+  Expected: Signal evaluation must check bar confirmation before acting
+  Reference: @topstepx/references/safety-patterns.md -> SAF-04
+  Fix in: [target_file_path]
+```
+
+**Loop back to Step 9** to fix the safety gap:
+- Add the missing safety pattern to the appropriate target file
+- Re-commit the fixed file
+- Re-run Step 10 safety verification
+
+Repeat until ALL checks PASS. The workflow CANNOT complete with any safety gap.
+
+### If ALL Checks PASS
+
+- Set safety confidence to **HIGH**
+- Update the Safety Integration table in `.planning/pinescript-conversion.md`:
+  - Set all "Applied" columns to "Yes"
+  - Set all "How" columns with specific implementation details
+- Update Conversion Confidence -> Safety compliance to **HIGH**
+- Commit the updated report:
+
+```bash
+node "$HOME/.claude/topstepx/bin/tsx-tools.cjs" commit "docs: update conversion report with safety verification results" --files .planning/pinescript-conversion.md
+```
+
+- Proceed to Step 11
+
+## 11. Completion Summary
+
+### Display Completion Banner
+
+```
+--------------------------------------------------
+ TSX > PINESCRIPT CONVERSION COMPLETE
+--------------------------------------------------
+
+Source: [PineScript strategy name] (v[version])
+Target: [target language]
+
+| Artifact | Location |
+|----------|----------|
+| Conversion Report | .planning/pinescript-conversion.md |
+| Target Code | [list target file paths] |
+
+Repainting Audit: [CLEAN / N issues found, safe defaults applied]
+MTF Audit: [CLEAN / N/A / N issues found, [1] offset applied]
+Signal Mode: [Confirmed Bar / Tick-Based (acknowledged)]
+Safety Verification: ALL PASSED (SAF-01 through SAF-05)
+Indicators Converted: [count]
+Inputs Mapped to Config: [count]
+Visual Elements Skipped: [count]
+
+--------------------------------------------------
+
+Next Steps:
+
+  /tsx:verify-work [phase]   -- Test the converted bot
+  /tsx:progress              -- Check project status
+
+--------------------------------------------------
+```
+
+### Commit Final State
+
+```bash
+node "$HOME/.claude/topstepx/bin/tsx-tools.cjs" commit "feat: PineScript conversion complete ([strategy name] -> [target language])" --files .planning/pinescript-conversion.md
+```
+
 </process>
+
+<output>
+
+## Generated Artifacts
+
+- `.planning/pinescript-conversion.md` -- Conversion report (populated from `@topstepx/templates/pinescript-conversion.md`)
+- Converted target code files (paths documented in conversion report Generated Files table)
+
+</output>
+
+<success_criteria>
+
+- [ ] PineScript source parsed (strategy declaration, inputs, indicators, entries/exits, position management, MTF, alerts extracted)
+- [ ] Repainting audit (SAF-04) completed -- issues flagged with safe defaults applied
+- [ ] Multi-timeframe audit completed -- request.security() calls checked for lookahead bias
+- [ ] Signal confirmation mode decided (confirmed-bar default or user-acknowledged tick-based)
+- [ ] Conversion mapping completed (PineScript constructs to TopStepX API calls)
+- [ ] Conversion report generated from `@topstepx/templates/pinescript-conversion.md` template -> committed
+- [ ] Target code generated in PineScript-specific trading build order (includes bar data management and position reversal handling)
+- [ ] Target code uses bot scaffold template as structural base
+- [ ] All PineScript inputs mapped to configurable bot parameters (no magic numbers)
+- [ ] Safety verification PASSED for ALL SAF-01 through SAF-05 patterns (including SAF-04 confirmed bar gate)
+- [ ] All target files committed atomically
+- [ ] User knows next step (/tsx:verify-work or /tsx:progress)
+
+</success_criteria>
