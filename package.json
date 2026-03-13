@@ -1,12 +1,13 @@
 {
   "name": "topstepx-skill",
   "version": "1.0.0",
-  "description": "Teaches AI coding assistants how to build integrations with the TopStepX (ProjectX Gateway) trading API",
+  "description": "TSX -- AI framework for building TopStepX trading bots. Extends GSD (Get Shit Done) with trading domain workflows, agents, and templates.",
   "bin": {
     "topstepx-skill": "bin/install.js"
   },
   "files": [
     "bin/",
+    "commands/",
     "skills/",
     "topstepx/"
   ],
@@ -22,8 +23,19 @@
     "codex",
     "gemini-cli",
     "ai-skill",
-    "agent-skill"
+    "agent-skill",
+    "workflow",
+    "pinescript",
+    "trading-bot",
+    "gsd",
+    "get-shit-done",
+    "framework",
+    "ai-framework"
   ],
+  "credits": {
+    "framework": "Built on the GSD (Get Shit Done) framework by TACHES",
+    "url": "https://github.com/gsd-build/get-shit-done"
+  },
   "author": "mizu-trading",
   "license": "MIT",
   "repository": {
